@@ -1,6 +1,6 @@
 # coding=utf-8
 # """
-# Export .obj files for all blendshape weights in Maya.
+# Export all expression in a scene/project in Maya.
 
 # Author: Zhao Yafei (zhaoyafei0210@gmail.com)
 # """
