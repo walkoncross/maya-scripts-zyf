@@ -30,12 +30,12 @@ def get_current_scene_name():
     return scene_name
 
 
-def get_blendshape_keys_list(blendshape_deformer_name):
+def get_blendshape_keys_list(blendshape_node_name):
     """
     Get name list of blendshape keys (name of target-shapes/morphing-targets).
 
     Args:
-        blendshape_deformer_name: str 
+        blendshape_node_name: str 
             Name of blend shape deformer (blendShape Node) in Maya.
 
     Returns: 
@@ -44,24 +44,24 @@ def get_blendshape_keys_list(blendshape_deformer_name):
 
     """
     # Maya Mel cmd
-    # cmd = 'listAttr -k -m -st "weight" ' + blendshape_deformer_name
+    # cmd = 'listAttr -k -m -st "weight" ' + blendshape_node_name
     # blendshape_keys_list = mel.eval(cmd)
 
     # Maya python cmd
     blendshape_keys_list = cmds.listAttr(
-        blendshape_deformer_name, st='weight', multi=True, keyable=True)
+        blendshape_node_name, st='weight', multi=True, keyable=True)
 
     blendshape_keys_list.sort()
 
     return blendshape_keys_list
 
 
-def export_blendshape_keys(blendshape_deformer_name, save_dir='./'):
+def export_blendshape_keys(blendshape_node_name, save_dir='./'):
     """
     Get and save name list of blendshape keys (name of target-shapes/morphing-targets).
 
     Args:
-        blendshape_deformer_name: str
+        blendshape_node_name: str
             Name of blend shape deformer (blendShape Node) in Maya.
         save_dir: str
             Directory to save blendshape keys list.
@@ -75,9 +75,9 @@ def export_blendshape_keys(blendshape_deformer_name, save_dir='./'):
 
     scene_name = get_current_scene_name()
     blendshape_keys_filename = osp.join(
-        save_dir, '{}.blendshape.{}.txt'.format(scene_name, blendshape_deformer_name))
+        save_dir, '{}.blendshape.{}.txt'.format(scene_name, blendshape_node_name))
 
-    blendshape_keys_list = get_blendshape_keys_list(blendshape_deformer_name)
+    blendshape_keys_list = get_blendshape_keys_list(blendshape_node_name)
 
     for idx, blendshape in enumerate(blendshape_keys_list):
         pprint('---> {}: {}'.format(idx+1, blendshape))
@@ -92,7 +92,7 @@ def export_blendshape_keys(blendshape_deformer_name, save_dir='./'):
 
 
 if __name__ == '__main__':
-    blendshape_deformer_name = r'AI_TD_01_Head01_blendShape'
+    blendshape_node_name = r'AI_TD_01_Head01_blendShape'
     save_dir = r'/Users/zhaoyafei/Downloads/bs_definition_3D_face/yuanli_bs_tang'
 
-    export_blendshape_keys(blendshape_deformer_name, save_dir)
+    export_blendshape_keys(blendshape_node_name, save_dir)
