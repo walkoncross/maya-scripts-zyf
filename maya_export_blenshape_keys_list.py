@@ -1,6 +1,6 @@
 # coding=utf-8
 # """
-# Export weight (key) list of a  blendshape in Maya.
+# Export name list (or blendshape keys) for target shapes of a blendshape node in Maya.
 
 # Author: Zhao Yafei (zhaoyafei0210@gmail.com)
 # """
@@ -32,7 +32,7 @@ def get_current_scene_name():
 
 def get_blendshape_keys_list(blendshape_node_name):
     """
-    Get name list of blendshape keys (name of target-shapes/morphing-targets).
+    Get name list (blendshape keys) of target-shapes/morphing-targets of blendshape.
 
     Args:
         blendshape_node_name: str 
@@ -40,9 +40,10 @@ def get_blendshape_keys_list(blendshape_node_name):
 
     Returns: 
         list of str
-            Name list of blendshape keys (weight names).
+            Name list of target shapes of the input blendshape node.
 
     """
+
     # Maya Mel cmd
     # cmd = 'listAttr -k -m -st "weight" ' + blendshape_node_name
     # blendshape_keys_list = mel.eval(cmd)

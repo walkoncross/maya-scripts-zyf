@@ -14,6 +14,7 @@ Table of Contents:
       - [Python API](#python-api)
         - [Offical (but confusing) Python APIs](#offical-but-confusing-python-apis)
         - [PyMel](#pymel)
+  - [Which Python API to use?](#which-python-api-to-use)
   - [Scripting in Maya](#scripting-in-maya)
     - [MEL and Expressions](#mel-and-expressions)
     - [Python in Maya](#python-in-maya)
@@ -21,6 +22,10 @@ Table of Contents:
       - [pymel.core](#pymelcore)
       - [maya.OpenMaya](#mayaopenmaya)
       - [maya.api.OpenMaya](#mayaapiopenmaya)
+  - [Maya Scripts](#maya-scripts)
+    - [In-product MEL scripts](#in-product-mel-scripts)
+    - [blendshapes](#blendshapes)
+    - [expressions](#expressions)
   - [Maya Commands Reference and Node Types Reference](#maya-commands-reference-and-node-types-reference)
     - [Maya 2020](#maya-2020)
     - [Maya 2019](#maya-2019)
@@ -35,10 +40,6 @@ Table of Contents:
     - [Maya 2010](#maya-2010)
     - [Maya 2009](#maya-2009)
     - [Maya 2008](#maya-2008)
-  - [Maya Scripts](#maya-scripts)
-    - [In-product MEL scripts](#in-product-mel-scripts)
-    - [blendshapes](#blendshapes)
-    - [expressions](#expressions)
 
 ## Maya Application Content
 
@@ -114,6 +115,15 @@ What is PyMel:
 
     PyMEL makes python scripting in Maya work the way it should. Maya’s command module is a direct translation of MEL commands into python functions. The result is a very awkward and unpythonic syntax which does not take advantage of python’s strengths – particularly, a flexible, object-oriented design. PyMEL builds on the cmds module by organizing many of its commands into a class hierarchy, and by customizing them to operate in a more succinct and intuitive way.
 
+## Which Python API to use?
+The official ones: maya.cmds/maya.mel
+
+__Reasons__:
+- Official support
+- More stable
+- Detailed reference ([Maya Commands Reference and Node Types Reference](#maya-commands-reference-and-node-types-reference))
+- Slow update of PyMel (As of June 2020, v1.0.10 only annouced support for Maya 2018, See [Here](https://help.autodesk.com/cloudhelp/2019/JPN/Maya-Tech-Docs/PyMel/whats_new.html#version-1-0-10))
+
 
 ## Scripting in Maya
 Cloud Help for [Scripting in Maya 2019](https://knowledge.autodesk.com/support/maya/learn-explore/caas/CloudHelp/cloudhelp/2019/ENU/Maya-Scripting/files/GUID-1C6C0BC0-002C-4035-ADC7-97AD2F390190-htm.html) on knowledge.autodesk.com.
@@ -140,6 +150,40 @@ This is a Python wrapper for the Maya C++ API, and referred to as Python API 1.0
 
 #### maya.api.OpenMaya
 This is a Python wrapper for the Maya C++ API, and referred to as Python API 2.0. This wrapper has better performance and is more "Pythonic" than the Python API 1.0. It is also a newer API, and is still under development, so not all classes exposed in 1.0 are available. For more information, see "Maya Python API 2.0" and "Maya Python API 2.0 Reference" in the Maya Developer Help.
+
+## Maya Scripts
+
+### In-product MEL scripts
+On MacOS, Maya 2019 in-product scripts (.MEL) are under /Applications/Autodesk/maya2019/Maya.app/Contents/scripts. The content tree is as follows:
+
+```
+/Applications/Autodesk/maya2019/Maya.app/Contents/scripts
+├── AETemplates
+├── FBX
+├── NETemplates
+├── fur
+├── gameFbxExporterPresets
+├── muscle
+├── others
+├── paintEffects
+├── shelves
+├── startup
+├── turtle
+└── unsupported
+```
+
+### blendshapes
+- Duplicate blendshape targets
+    - default: When operating in Shape Editor, this will automatically call /Applications/Autodesk/maya2019/Maya.app/Contents/scripts/blendShapeEditorDuplicateTargets.MEL
+- Export blendshape keys list into .txt file
+  - [Python Script with maya.cmds](./maya_export_blenshape_keys_list.py)
+- Export blendshape target shapes into .obj file
+  - [Python Script with maya.cmds](./maya_export_blenshape_objs.py)
+
+### expressions
+- Export expressions into .txt file
+  - [Python Script with maya.cmds](./maya_export_expressions.py)
+
 
 ## Maya Commands Reference and Node Types Reference
 The following links were accessible as of June 2020.
@@ -196,34 +240,3 @@ The following links were accessible as of June 2020.
   - [Commands in MEL](https://download.autodesk.com/us/maya/2008help/Commands/index.html)
   - [Commands in Python](https://download.autodesk.com/us/maya/2008help/CommandsPython/index.html)
   - [Node Types](https://download.autodesk.com/us/maya/2008help/Nodes/index.html)
-
-## Maya Scripts
-
-### In-product MEL scripts
-On MacOS, Maya 2019 in-product scripts (.MEL) are under /Applications/Autodesk/maya2019/Maya.app/Contents/scripts. The content tree is as follows:
-
-```
-/Applications/Autodesk/maya2019/Maya.app/Contents/scripts
-├── AETemplates
-├── FBX
-├── NETemplates
-├── fur
-├── gameFbxExporterPresets
-├── muscle
-├── others
-├── paintEffects
-├── shelves
-├── startup
-├── turtle
-└── unsupported
-```
-
-### blendshapes
-- Duplicate blendshape targets
-    - default: When operating in Shape Editor, this will automatically call /Applications/Autodesk/maya2019/Maya.app/Contents/scripts/blendShapeEditorDuplicateTargets.MEL
-- Export blendshape keys list into .txt file
-  - [Python Script with maya.cmds](./maya_export_blenshape_keys_list.py)
-
-### expressions
-- Export expressions into .txt file
-  - [Python Script with maya.cmds](./maya_export_expressions.py)
