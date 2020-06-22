@@ -1,7 +1,9 @@
 
 # Scripting in Autodesk Maya
+Author: [Zhao Yafei](https://github.com/walkoncross/) (email: zhaoyafei0210@gmail.com)
+
 1. Some useful information about scripting in Autodesk Maya.
-2. Some Scripts (MEL or Python) for Autodesk Maya.
+2. Some Scripts (MEL or Python) for operations in Maya.
 
 Table of Contents:
 - [Scripting in Autodesk Maya](#scripting-in-autodesk-maya)
@@ -176,13 +178,13 @@ On MacOS, Maya 2019 in-product scripts (.MEL) are under /Applications/Autodesk/m
 - Duplicate blendshape targets
     - default: When operating in Shape Editor, this will automatically call /Applications/Autodesk/maya2019/Maya.app/Contents/scripts/blendShapeEditorDuplicateTargets.MEL
 - Export blendshape keys list into .txt file
-  - [Python Script with maya.cmds](./maya_export_blenshape_keys_list.py)
+  - [Python Script with maya.cmds](./maya_export_blenshape_keys_list.py) (Tested in Maya2019)
 - Export blendshape target shapes into .obj file
-  - [Python Script with maya.cmds](./maya_export_blenshape_objs.py)
+  - [Python Script with maya.cmds](./maya_export_blenshape_objs.py) (Tested in Maya2019)
 
 ### expressions
 - Export expressions into .txt file
-  - [Python Script with maya.cmds](./maya_export_expressions.py)
+  - [Python Script with maya.cmds](./maya_export_expressions.py) (Tested in Maya2019)
 
 
 ## Maya Commands Reference and Node Types Reference
