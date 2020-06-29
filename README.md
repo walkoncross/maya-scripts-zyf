@@ -209,9 +209,11 @@ On MacOS, Maya 2019 in-product scripts (.MEL) are under /Applications/Autodesk/m
 ### blendshapes
 - Duplicate blendshape targets
     - default: When operating in Shape Editor, this will automatically call /Applications/Autodesk/maya2019/Maya.app/Contents/scripts/blendShapeEditorDuplicateTargets.MEL
-- Export blendshape keys list into .txt file
+- Export name list of target shape of the specified blendshape into .txt file
   - [Python Script with maya.cmds](./maya_export_blenshape_keys_list.py) (Tested in Maya2019)
-- Export blendshape target shapes into .obj file
+- Export name list of target shape of all blendshape nodes into .txt file
+  - [Python Script with maya.cmds](./maya_export_blenshape_keys_list_all.py) (Tested in Maya2019)
+- Export target shapes of specified blendshape into .obj file
   - [Python Script with maya.cmds](./maya_export_blenshape_objs.py) (Tested in Maya2019)
 
 ### expressions
