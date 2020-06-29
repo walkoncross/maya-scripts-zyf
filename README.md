@@ -26,6 +26,7 @@ Table of Contents:
       - [maya.api.OpenMaya](#mayaapiopenmaya)
   - [Maya Scripts](#maya-scripts)
     - [In-product MEL scripts](#in-product-mel-scripts)
+    - [nodes/objects](#nodesobjects)
     - [blendshapes](#blendshapes)
     - [expressions](#expressions)
   - [Maya Commands Reference and Node Types Reference](#maya-commands-reference-and-node-types-reference)
@@ -94,28 +95,30 @@ C++ API provides deeper access to Maya’s internals. With the API you can creat
 ##### Offical (but confusing) Python APIs
 PyMel docs give an clear introduction for the confusing official Maya Python APIs on this page (
 [Why PyMEL?](http://help.autodesk.com/view/MAYAUL/2019/ENU/?guid=__PyMel_index_html)):
+```
 
-    Rather than reinvent the wheel, Autodesk opted to provide “wrappers” around their pre-existing toolsets: the C++ API and MEL. By wrapping them they provided an alternate python interface for each, but the core code that comprises the API and MEL remained largely the same. The wrappers serve as a (hopefully) thin layer to communicate between python and the Maya code being wrapped. The nature of the wraps is slightly different for each.
+  Rather than reinvent the wheel, Autodesk opted to provide “wrappers” around their pre-existing toolsets: the C++ API and MEL. By wrapping them they provided an alternate python interface for each, but the core code that comprises the API and MEL remained largely the same. The wrappers serve as a (hopefully) thin layer to communicate between python and the Maya code being wrapped. The nature of the wraps is slightly different for each.
 
-    - maya.OpenMaya
-    In the case of the C++ API, Autodesk went with an open source wrapper called swig which generates python functions and classes from C++ counterparts. The python layer rests on top of C++, which remains the native execution language. During execution, swig marshals data back and forth between python and C++.
-    MEL itself is split into two components: commands, and everything else.
+  - maya.OpenMaya
+  In the case of the C++ API, Autodesk went with an open source wrapper called swig which generates python functions and classes from C++ counterparts. The python layer rests on top of C++, which remains the native execution language. During execution, swig marshals data back and forth between python and C++.
+  MEL itself is split into two components: commands, and everything else.
 
-    - maya.cmds
-    In the case of MEL commands, which are (effectively) written using the C++ API, Autodesk wrote the wrapping mechanism themselves such that MEL commands could also be registered and used in python as functions. The same command executed in MEL and python ultimately end up triggering the same underlying C++ API calls.
-    
-    - maya.mel.eval
-    In order to allow execution of arbitrary MEL code such as procedures, Autodesk provided high level access to the MEL interpreter. This is as simple of a wrapper as you can get: evaluate a string representing a chunk of MEL code in the MEL interpreter and convert the result to a python object (string, float, int, and lists thereof).
-    So now that python is available in Maya all of our problems are solved, right? Well, not quite. Since these new modules are just wraps of the same underlying API and MEL code that we’ve had all along and neither were intended to eventually become “pythonified”, the syntax that results from this layering of python over MEL and C++ tends to be awkward, especially to those familiar with python’s idioms.
+  - maya.cmds
+  In the case of MEL commands, which are (effectively) written using the C++ API, Autodesk wrote the wrapping mechanism themselves such that MEL commands could also be registered and used in python as functions. The same command executed in MEL and python ultimately end up triggering the same underlying C++ API calls.
+  
+  - maya.mel.eval
+  In order to allow execution of arbitrary MEL code such as procedures, Autodesk provided high level access to the MEL interpreter. This is as simple of a wrapper as you can get: evaluate a string representing a chunk of MEL code in the MEL interpreter and convert the result to a python object (string, float, int, and lists thereof).
+  So now that python is available in Maya all of our problems are solved, right? Well, not quite. Since these new modules are just wraps of the same underlying API and MEL code that we’ve had all along and neither were intended to eventually become “pythonified”, the syntax that results from this layering of python over MEL and C++ tends to be awkward, especially to those familiar with python’s idioms.
 
-    This syntactical awkwardness, particularly in maya.cmds, was one of the initial inspirations behind PyMEL. Think of it this way: would you rather read a book that was translated from japanese into english by a software program like babelfish or by a human who is fluent in both languages? That is a key difference between an automatic wrap like maya.cmds and a “restructured wrap” like PyMEL, which uses the maya python modules as building blocks to construct an intuitive, insightful, and pythonic API.
+  This syntactical awkwardness, particularly in maya.cmds, was one of the initial inspirations behind PyMEL. Think of it this way: would you rather read a book that was translated from japanese into english by a software program like babelfish or by a human who is fluent in both languages? That is a key difference between an automatic wrap like maya.cmds and a “restructured wrap” like PyMEL, which uses the maya python modules as building blocks to construct an intuitive, insightful, and pythonic API.
+```
 
 ##### PyMel
 [PyMel Docs](http://help.autodesk.com/view/MAYAUL/2019/ENU/?guid=__PyMel_index_html)
 
 What is PyMel:
 
-    PyMEL makes python scripting in Maya work the way it should. Maya’s command module is a direct translation of MEL commands into python functions. The result is a very awkward and unpythonic syntax which does not take advantage of python’s strengths – particularly, a flexible, object-oriented design. PyMEL builds on the cmds module by organizing many of its commands into a class hierarchy, and by customizing them to operate in a more succinct and intuitive way.
+> PyMEL makes python scripting in Maya work the way it should. Maya’s command module is a direct translation of MEL commands into python functions. The result is a very awkward and unpythonic syntax which does not take advantage of python’s strengths – particularly, a flexible, object-oriented design. PyMEL builds on the cmds module by organizing many of its commands into a class hierarchy, and by customizing them to operate in a more succinct and intuitive way.
 
 ## Which Python API to use?
 The official ones: maya.cmds/maya.mel
@@ -173,6 +176,35 @@ On MacOS, Maya 2019 in-product scripts (.MEL) are under /Applications/Autodesk/m
 ├── turtle
 └── unsupported
 ```
+
+### nodes/objects
+- List nodes
+  - [Python Script with maya.cmds](./maya_get_nodes_list.py) (Tested in Maya2019) functions:
+    - get_current_scene_name()
+    - export_nodes_list()
+    - get_node_types()
+    - get_all_node_list()
+    - get_all_shape_nodes()
+    - get_all_transform_nodes()
+    - get_all_mesh_nodes()
+    - get_all_joint_nodes()
+    - get_all_blendshape_nodes()
+    - get_all_geometry_nodes()
+    - get_all_material_nodes()
+    - get_all_texture_nodes()
+    - get_all_camera_nodes()
+    - get_all_light_nodes()
+    - get_all_partition_nodes()
+    - get_all_set_nodes()
+    - get_all_container_nodes()
+    - get_all_plane_nodes()
+- List nodes of the specified type
+  - [Python Script with maya.cmds](./maya_get_nodes_list_of_type.py) (Tested in Maya2019) functions:
+      - get_current_scene_name()
+      - export_nodes_list()
+      - get_node_types()
+      - get_all_node_list()
+      - get_node_list_of_type(): succeeded on types: mesh/blendShape/joint/camera/constraint/..., failed on types: material/texture/light
 
 ### blendshapes
 - Duplicate blendshape targets
