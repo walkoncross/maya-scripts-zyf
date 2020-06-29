@@ -29,6 +29,7 @@ Table of Contents:
     - [nodes/objects](#nodesobjects)
     - [blendshapes](#blendshapes)
     - [expressions](#expressions)
+    - [keyframe](#keyframe)
   - [Maya Commands Reference and Node Types Reference](#maya-commands-reference-and-node-types-reference)
     - [Maya 2020](#maya-2020)
     - [Maya 2019](#maya-2019)
@@ -221,6 +222,10 @@ On MacOS, Maya 2019 in-product scripts (.MEL) are under /Applications/Autodesk/m
 ### expressions
 - Export expressions into .txt file
   - Python Script with maya.cmds: [maya_export_expressions.py](./maya_export_expressions.py) (Tested in Maya2019)
+
+### keyframe
+- Export keyframe meshes into .obj file
+  - Python Script with maya.cmds: [maya_export_keyframe_meshes_to_objs.py](./maya_export_keyframe_meshes_to_objs.py) (Tested in Maya2019)
 
 
 ## Maya Commands Reference and Node Types Reference
