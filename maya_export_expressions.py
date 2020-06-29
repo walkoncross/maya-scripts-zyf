@@ -28,16 +28,16 @@ def get_current_scene_name():
     return scene_name
 
 
-def get_expression_list():
+def get_all_expression_nodes():
     """
-    Get name list of expressions.
+    Get name list of expression nodes.
 
     Args: 
         None.
 
     Returns: 
         list of str
-            Name list of all expressions.
+            Name list of all expression nodes.
     """
 
     expression_list = cmds.ls(type='expression')
@@ -46,12 +46,12 @@ def get_expression_list():
     return expression_list
 
 
-def export_expression(expression_name, save_dir='./'):
+def export_expression(expression_node_name, save_dir='./'):
     """
     Export the content (string) of a expression to save_dir.
 
     Args:
-        expression_name: str
+        expression_node_name: str
             Expression name;
         save_dir: str
             Save directory;
@@ -59,9 +59,9 @@ def export_expression(expression_name, save_dir='./'):
     Returns: 
         None.
     """
-    pprint('===> export expression: ' + expression_name)
-    save_filename = osp.join(save_dir, expression_name+'.txt')
-    expression = cmds.getAttr(expression_name+'.expression')
+    pprint('===> export expression: ' + expression_node_name)
+    save_filename = osp.join(save_dir, expression_node_name+'.txt')
+    expression = cmds.getAttr(expression_node_name+'.expression')
     # pprint(expression)
 
     pprint('---> save expression into file {}'.format(save_filename))
@@ -91,7 +91,7 @@ def export_all_expressions(save_dir):
     save_dir = osp.join(save_dir, scene_name+'_expressions')
     os.mkdir(save_dir)
 
-    expression_list = get_expression_list()
+    expression_list = get_all_expression_nodes()
 
     for exp_name in expression_list:
         export_expression(exp_name, save_dir)
