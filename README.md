@@ -179,7 +179,8 @@ On MacOS, Maya 2019 in-product scripts (.MEL) are under /Applications/Autodesk/m
 
 ### nodes/objects
 - List nodes
-  - [Python Script with maya.cmds](./maya_get_nodes_list.py) (Tested in Maya2019) functions:
+  - Python Script with maya.cmds: [maya_get_nodes_list.py](./maya_get_nodes_list.py) (Tested in Maya2019) 
+  __functions:__
     - get_current_scene_name()
     - export_nodes_list()
     - get_node_types()
@@ -199,26 +200,27 @@ On MacOS, Maya 2019 in-product scripts (.MEL) are under /Applications/Autodesk/m
     - get_all_container_nodes()
     - get_all_plane_nodes()
 - List nodes of the specified type
-  - [Python Script with maya.cmds](./maya_get_nodes_list_of_type.py) (Tested in Maya2019) functions:
-      - get_current_scene_name()
-      - export_nodes_list()
-      - get_node_types()
-      - get_all_node_list()
-      - get_node_list_of_type(): succeeded on types: mesh/blendShape/joint/camera/constraint/..., failed on types: material/texture/light
+  - Python Script with maya.cmds: [maya_get_nodes_list_of_type.py](./maya_get_nodes_list_of_type.py) (Tested in Maya2019) 
+  __functions:__
+    - get_current_scene_name()
+    - export_nodes_list()
+    - get_node_types()
+    - get_all_node_list()
+    - get_node_list_of_type(): succeeded on types: mesh/blendShape/joint/camera/constraint/..., failed on types: material/texture/light
 
 ### blendshapes
 - Duplicate blendshape targets
     - default: When operating in Shape Editor, this will automatically call /Applications/Autodesk/maya2019/Maya.app/Contents/scripts/blendShapeEditorDuplicateTargets.MEL
 - Export name list of target shape of the specified blendshape into .txt file
-  - [Python Script with maya.cmds](./maya_export_blenshape_keys_list.py) (Tested in Maya2019)
+  - Python Script with maya.cmds: [maya_export_blenshape_keys_list.py](./maya_export_blenshape_keys_list.py) (Tested in Maya2019)
 - Export name list of target shape of all blendshape nodes into .txt file
-  - [Python Script with maya.cmds](./maya_export_blenshape_keys_list_all.py) (Tested in Maya2019)
+  - Python Script with maya.cmds: [maya_export_blenshape_keys_list_all.py](./maya_export_blenshape_keys_list_all.py) (Tested in Maya2019)
 - Export target shapes of specified blendshape into .obj file
-  - [Python Script with maya.cmds](./maya_export_blenshape_objs.py) (Tested in Maya2019)
+  - Python Script with maya.cmds: [maya_export_blenshape_objs.py](./maya_export_blenshape_objs.py) (Tested in Maya2019)
 
 ### expressions
 - Export expressions into .txt file
-  - [Python Script with maya.cmds](./maya_export_expressions.py) (Tested in Maya2019)
+  - Python Script with maya.cmds: [maya_export_expressions.py](./maya_export_expressions.py) (Tested in Maya2019)
 
 
 ## Maya Commands Reference and Node Types Reference
