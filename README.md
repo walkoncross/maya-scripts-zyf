@@ -179,9 +179,15 @@ On MacOS, Maya 2019 in-product scripts (.MEL) are under /Applications/Autodesk/m
 ```
 
 ### nodes/objects
+<<<<<<< HEAD
 - Get name lists of nodes/objects using cmds.ls()
   - Python Script with maya.cmds: [maya_get_nodes_list.py](./maya_get_nodes_list.py) (Tested in Maya2019) 
     __functions:__
+=======
+- List nodes
+  - Python Script with maya.cmds: [maya_get_nodes_list.py](./maya_get_nodes_list.py) (Tested in Maya2019) 
+  __functions:__
+>>>>>>> 60df6a9dcf400759156b3f5d951789b5e6e53622
     - get_current_scene_name()
     - export_nodes_list()
     - get_node_types()
@@ -200,9 +206,15 @@ On MacOS, Maya 2019 in-product scripts (.MEL) are under /Applications/Autodesk/m
     - get_all_set_nodes()
     - get_all_container_nodes()
     - get_all_plane_nodes()
+<<<<<<< HEAD
 - Get node/object name list of the specified node type using cmds.ls()
   - Python Script with maya.cmds: [maya_get_nodes_list_of_type.py](./maya_get_nodes_list_of_type.py) (Tested in Maya2019) 
     __functions:__
+=======
+- List nodes of the specified type
+  - Python Script with maya.cmds: [maya_get_nodes_list_of_type.py](./maya_get_nodes_list_of_type.py) (Tested in Maya2019) 
+  __functions:__
+>>>>>>> 60df6a9dcf400759156b3f5d951789b5e6e53622
     - get_current_scene_name()
     - export_nodes_list()
     - get_node_types()
@@ -222,10 +234,13 @@ On MacOS, Maya 2019 in-product scripts (.MEL) are under /Applications/Autodesk/m
 ### expressions
 - Export expressions into .txt file
   - Python Script with maya.cmds: [maya_export_expressions.py](./maya_export_expressions.py) (Tested in Maya2019)
+<<<<<<< HEAD
 
 ### keyframe
 - Export keyframe meshes into .obj file
   - Python Script with maya.cmds: [maya_export_keyframe_meshes_to_objs.py](./maya_export_keyframe_meshes_to_objs.py) (Tested in Maya2019)
+=======
+>>>>>>> 60df6a9dcf400759156b3f5d951789b5e6e53622
 
 
 ## Maya Commands Reference and Node Types Reference
