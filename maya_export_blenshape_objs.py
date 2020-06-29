@@ -57,6 +57,27 @@ def get_blendshape_keys_list(blendshape_node_name):
     return blendshape_keys_list
 
 
+def get_blendshape_geometry_name(blendshape_node_name):
+    """
+    Get the geometry name binded with the specified blendshape.
+
+    Args:
+        blendshape_node_name: str 
+            Name of blend shape deformer (blendShape Node) in Maya.
+
+    Returns: 
+        list of str
+            Name list of geometry of the input blendshape node.
+
+    """
+    # Maya python cmd
+    geometry_list = cmds.blendShape(blendshape_node_name, query=True, geometry=True)
+
+    geometry_list.sort()
+
+    return geometry_list
+    
+
 def make_blendshape_keys_settable(blendshape_node_name, blendshape_keys_list=None):
     """
     Make keyable/settable a list of blendshape keys (name of target-shapes/morphing-targets)
@@ -154,7 +175,7 @@ def export_blendshape_target_shapes(blendshape_node_name,
     Args:
         blendshape_node_name: str
             Name of blend shape deformer (blendShape Node) in Maya.
-        mesh_node_name: str
+        mesh_node_name: str or list of str
             Name of mesh/shape in Maya;
         save_dir: str
             Directory to save .obj files for all target shapes of a blendshape node.
@@ -164,6 +185,8 @@ def export_blendshape_target_shapes(blendshape_node_name,
     Returns: 
         None.
     """
+    pprint("===> blendshape_node_name: {}".format(blendshape_node_name))
+    pprint("===> mesh_node_name: {}".format(mesh_node_name))
 
     if not osp.exists(save_dir):
         os.makedirs(save_dir)
@@ -223,7 +246,14 @@ def export_blendshape_target_shapes(blendshape_node_name,
         cmds.setAttr(key_name, v)
         cmds.setKeyframe(key_name)
 
-    cmd = "polyTriangulate -ch 1 " + mesh_node_name
+    if isinstance(mesh_node_name, list):
+        cmd = "polyTriangulate -ch 1 " + ' '.join(mesh_node_name)    
+    else:
+        cmd = "polyTriangulate -ch 1 " + mesh_node_name
+    
+    pprint('===> run MEL command: ')
+    pprint(cmd)
+
     mel.eval(cmd)
 
     # obj_filename = osp.join(save_dir, '00_neutral.obj')
@@ -232,9 +262,12 @@ def export_blendshape_target_shapes(blendshape_node_name,
 
     cmd = """file -force -options "groups=1;ptgroups=1;materials=1;smoothing=1;normals=1" 
                 -typ "OBJexport" -pr -es " {}/{}.obj";""".format(save_dir, "00_neutral")
+    pprint('===> run MEL command: ')
+    pprint(cmd)
     mel.eval(cmd)
 
     # 2. Export blendshape target shapes.
+    # for curr_k in blendshape_keys_list[:5]:
     for curr_k in blendshape_keys_list:
         # if not curr_k.startswith('jaw'):
         #     continue
@@ -248,7 +281,12 @@ def export_blendshape_target_shapes(blendshape_node_name,
             cmds.setAttr(key_name, v)
             cmds.setKeyframe(key_name)
 
-        cmd = "polyTriangulate -ch 1 " + mesh_node_name
+        if isinstance(mesh_node_name, list):
+            cmd = "polyTriangulate -ch 1 " + ' '.join(mesh_node_name)    
+        else:
+            cmd = "polyTriangulate -ch 1 " + mesh_node_name
+        pprint('===> run MEL command: ')
+        pprint(cmd)
         mel.eval(cmd)
 
         # obj_filename = osp.join(save_dir, curr_k+'.obj')
@@ -256,6 +294,8 @@ def export_blendshape_target_shapes(blendshape_node_name,
         #               -typ "OBJexport" -pr -es " {}";""".format(obj_filename)
         cmd = """file -force -options "groups=1;ptgroups=1;materials=1;smoothing=1;normals=1" 
                       -typ "OBJexport" -pr -es " {}/{}.obj";""".format(save_dir, curr_k)
+        pprint('===> run MEL command: ')
+        pprint(cmd)
         mel.eval(cmd)
 
     if need_restore:
@@ -263,10 +303,11 @@ def export_blendshape_target_shapes(blendshape_node_name,
 
 
 if __name__ == '__main__':
-    blendshape_node_name = r'AI_TD_01_Head01_blendShape'
-    mesh_node_name = r'AI_TD_01_Head01Shape'
-
     save_dir = r'/Users/zhaoyafei/Downloads/bs_definition_3D_face/yuanli_bs_tang2'
+    blendshape_node_name = r'AI_TD_01_Head01_blendShape'
+    # mesh_node_name = r'AI_TD_01_Head01Shape'
+    mesh_node_name = get_blendshape_geometry_name(blendshape_node_name)
+    pprint("===> mesh_node_name: {}".format(mesh_node_name))
 
     export_blendshape_target_shapes(
         blendshape_node_name, mesh_node_name, save_dir)
