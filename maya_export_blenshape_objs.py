@@ -145,7 +145,7 @@ def restore_settable_modification(settable_restore_info_list):
 
 
 def export_blendshape_target_shapes(blendshape_node_name,
-                                    geometry_mesh_name,
+                                    mesh_node_name,
                                     save_dir='./',
                                     blendshape_keys_list=None):
     """
@@ -154,7 +154,7 @@ def export_blendshape_target_shapes(blendshape_node_name,
     Args:
         blendshape_node_name: str
             Name of blend shape deformer (blendShape Node) in Maya.
-        geometry_mesh_name: str
+        mesh_node_name: str
             Name of mesh/shape in Maya;
         save_dir: str
             Directory to save .obj files for all target shapes of a blendshape node.
@@ -223,7 +223,7 @@ def export_blendshape_target_shapes(blendshape_node_name,
         cmds.setAttr(key_name, v)
         cmds.setKeyframe(key_name)
 
-    cmd = "polyTriangulate -ch 1 " + geometry_mesh_name
+    cmd = "polyTriangulate -ch 1 " + mesh_node_name
     mel.eval(cmd)
 
     # obj_filename = osp.join(save_dir, '00_neutral.obj')
@@ -248,7 +248,7 @@ def export_blendshape_target_shapes(blendshape_node_name,
             cmds.setAttr(key_name, v)
             cmds.setKeyframe(key_name)
 
-        cmd = "polyTriangulate -ch 1 " + geometry_mesh_name
+        cmd = "polyTriangulate -ch 1 " + mesh_node_name
         mel.eval(cmd)
 
         # obj_filename = osp.join(save_dir, curr_k+'.obj')
@@ -264,9 +264,9 @@ def export_blendshape_target_shapes(blendshape_node_name,
 
 if __name__ == '__main__':
     blendshape_node_name = r'AI_TD_01_Head01_blendShape'
-    mesh_geometry_name = r'AI_TD_01_Head01Shape'
+    mesh_node_name = r'AI_TD_01_Head01Shape'
 
     save_dir = r'/Users/zhaoyafei/Downloads/bs_definition_3D_face/yuanli_bs_tang2'
 
     export_blendshape_target_shapes(
-        blendshape_node_name, mesh_geometry_name, save_dir)
+        blendshape_node_name, mesh_node_name, save_dir)
