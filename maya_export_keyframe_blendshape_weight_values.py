@@ -30,6 +30,30 @@ def get_current_scene_name():
     return scene_name
 
 
+def get_all_blendshape_nodes(show_type=True):
+    """
+    Get name list of all blendshape nodes.
+
+    Args:
+        show_type: boolean
+            Whether to show the node type of each shape node.
+
+    Returns: 
+        list of str
+            Name list of all blendshape nodes.
+            If show_type==True, every second item in the list is the node type of its previous item.
+
+    """
+
+    # blendshape_nodes_list = cmds.lsType("blendShape")
+    blendshape_nodes_list = cmds.ls(type="blendShape", showType=show_type)
+
+    if not show_type:
+        blendshape_nodes_list.sort()
+
+    return blendshape_nodes_list
+
+
 def get_blendshape_keys_list(blendshape_node_name):
     """
     Get name list (blendshape keys) of target-shapes/morphing-targets of blendshape.
@@ -110,7 +134,7 @@ def export_keyframe_blendshape_weight_values(blendshape_node_name, save_dir='./'
 
         for node in blendshape_node_name:
             pprint('---> blendshape: {}'.format(node))
-            save_filename = "{}/{}.keyframe.blendshape.frame_{}.json".format(save_dir, scene_name, curr_time)
+            save_filename = "{}/{}.keyframe.{}.frame_{}.json".format(save_dir, scene_name, node, curr_time)
             blendshape_keys_list = get_blendshape_keys_list(node)
             weight_values = cmds.getAttr(node+'.weight')[0]
             # pprint(len(blendshape_keys_list))
@@ -125,6 +149,7 @@ def export_keyframe_blendshape_weight_values(blendshape_node_name, save_dir='./'
 
 if __name__ == '__main__':
     save_dir = r'/Users/zhaoyafei/Downloads/bs_definition_3D_face/yuanli_bs_tang2'
-    blendshape_node_name = r'AI_TD_01_Head01_blendShape'
+    # blendshape_node_name = r'AI_TD_01_Head01_blendShape'
+    blendshape_node_name = get_all_blendshape_nodes(False)
 
     export_keyframe_blendshape_weight_values(blendshape_node_name, save_dir, start_frame=1, end_frame=27)
