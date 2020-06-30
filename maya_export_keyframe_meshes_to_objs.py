@@ -100,6 +100,10 @@ def export_keyframe_meshes_into_objs(mesh_node_name, save_dir='./',
 
     scene_name = get_current_scene_name()
 
+    save_dir += '/{}_keyframe_mesh_objs'.format(scene_name)
+    if not osp.exists(save_dir):
+        os.makedirs(save_dir)
+
     # Export keyframe meshes.
     for curr_time in range(start_frame, end_frame+1):
         pprint('===> Export mesh at time: #{}'.format(curr_time))
