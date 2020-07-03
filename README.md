@@ -181,7 +181,7 @@ On MacOS, Maya 2019 in-product scripts (.MEL) are under /Applications/Autodesk/m
 
 ### nodes/objects
 - Get name lists of nodes/objects using cmds.ls()
-  - Python Script with maya.cmds: [maya_get_nodes_list.py](./maya_get_nodes_list.py) (Tested in Maya2019) 
+  - Python Script with maya.cmds: [maya_get_nodes_list.py](./maya_python_scripts/maya_get_nodes_list.py) (Tested in Maya2019) 
     __functions:__
     - get_current_scene_name()
     - export_nodes_list()
@@ -202,7 +202,7 @@ On MacOS, Maya 2019 in-product scripts (.MEL) are under /Applications/Autodesk/m
     - get_all_container_nodes()
     - get_all_plane_nodes()
 - Get node/object name list of the specified node type using cmds.ls()
-  - Python Script with maya.cmds: [maya_get_nodes_list_of_type.py](./maya_get_nodes_list_of_type.py) (Tested in Maya2019) 
+  - Python Script with maya.cmds: [maya_get_nodes_list_of_type.py](./maya_python_scripts/maya_get_nodes_list_of_type.py) (Tested in Maya2019) 
     __functions:__
     - get_current_scene_name()
     - export_nodes_list()
@@ -214,34 +214,34 @@ On MacOS, Maya 2019 in-product scripts (.MEL) are under /Applications/Autodesk/m
 - Duplicate blendshape targets
     - default: When operating in Shape Editor, this will automatically call /Applications/Autodesk/maya2019/Maya.app/Contents/scripts/blendShapeEditorDuplicateTargets.MEL
 - Export name list of target shape of the specified blendshape into .txt file
-  - Python Script with maya.cmds: [maya_export_blenshape_keys_list.py](./maya_export_blenshape_keys_list.py) (Tested in Maya2019)
+  - Python Script with maya.cmds: [maya_export_blenshape_keys_list.py](./maya_python_scripts/maya_export_blenshape_keys_list.py) (Tested in Maya2019)
 - Export name list of target shape of all blendshape nodes into .txt file
-  - Python Script with maya.cmds: [maya_export_blenshape_keys_list_all.py](./maya_export_blenshape_keys_list_all.py) (Tested in Maya2019)
+  - Python Script with maya.cmds: [maya_export_blenshape_keys_list_all.py](./maya_python_scripts/maya_export_blenshape_keys_list_all.py) (Tested in Maya2019)
 - Export target shapes of specified blendshape into .obj file
-  - Python Script with maya.cmds: [maya_export_blenshape_objs.py](./maya_export_blenshape_objs.py) (Tested in Maya2019)
+  - Python Script with maya.cmds: [maya_export_blenshape_objs.py](./maya_python_scripts/maya_export_blenshape_objs.py) (Tested in Maya2019)
 - Export __keyframe__ blendshape weight values into .json file
-  - Python Script with maya.cmds: [maya_export_keyframe_blendshape_weight_values.py](./maya_export_keyframe_blendshape_weight_values.py) (Tested in Maya2019)
+  - Python Script with maya.cmds: [maya_export_keyframe_blendshape_weight_values.py](./maya_python_scripts/maya_export_keyframe_blendshape_weight_values.py) (Tested in Maya2019)
 
 ### expressions
 - Export expressions into .txt file
-  - Python Script with maya.cmds: [maya_export_expressions.py](./maya_export_expressions.py) (Tested in Maya2019)
+  - Python Script with maya.cmds: [maya_export_expressions.py](./maya_python_scripts/maya_export_expressions.py) (Tested in Maya2019)
 
 ### joints
 - Export __keyframe__ joints values into .json file
-  - Python Script with maya.cmds: [maya_export_keyframe_joint_values.py](./maya_export_keyframe_joint_values.py) (Tested in Maya2019)
+  - Python Script with maya.cmds: [maya_export_keyframe_joint_values.py](./maya_python_scripts/maya_export_keyframe_joint_values.py) (Tested in Maya2019)
 
 
 ### keyframe
 - Export keyframe meshes into .obj file
-  - Python Script with maya.cmds: [maya_export_keyframe_meshes_to_objs.py](./maya_export_keyframe_meshes_to_objs.py) (Tested in Maya2019)
-  - Python Script with maya.cmds: [maya_export_keyframe_meshes_to_objs_with_names.py](./maya_export_keyframe_meshes_to_objs_with_names.py) (Tested in Maya2019)
+  - Python Script with maya.cmds: [maya_export_keyframe_meshes_to_objs.py](./maya_python_scripts/maya_export_keyframe_meshes_to_objs.py) (Tested in Maya2019)
+  - Python Script with maya.cmds: [maya_export_keyframe_meshes_to_objs_with_names.py](./maya_python_scripts/maya_export_keyframe_meshes_to_objs_with_names.py) (Tested in Maya2019)
 
 - Export __keyframe__ blendshape weight values into .json file
-  - Python Script with maya.cmds: [maya_export_keyframe_blendshape_weight_values.py](./maya_export_keyframe_blendshape_weight_values.py) (Tested in Maya2019)
-  - Python Script with maya.cmds: [maya_export_keyframe_blendshape_weight_values_with_names.py](./maya_export_keyframe_blendshape_weight_values_with_names.py) (Tested in Maya2019)
+  - Python Script with maya.cmds: [maya_export_keyframe_blendshape_weight_values.py](./maya_python_scripts/maya_export_keyframe_blendshape_weight_values.py) (Tested in Maya2019)
+  - Python Script with maya.cmds: [maya_export_keyframe_blendshape_weight_values_with_names.py](./maya_python_scripts/maya_export_keyframe_blendshape_weight_values_with_names.py) (Tested in Maya2019)
 
 - Export __keyframe__ joints values into .json file
-  - Python Script with maya.cmds: [maya_export_keyframe_joint_values.py](./maya_export_keyframe_joint_values.py) (Tested in Maya2019)
+  - Python Script with maya.cmds: [maya_export_keyframe_joint_values.py](./maya_python_scripts/maya_export_keyframe_joint_values.py) (Tested in Maya2019)
 
 
 
