@@ -234,9 +234,11 @@ On MacOS, Maya 2019 in-product scripts (.MEL) are under /Applications/Autodesk/m
 ### keyframe
 - Export keyframe meshes into .obj file
   - Python Script with maya.cmds: [maya_export_keyframe_meshes_to_objs.py](./maya_export_keyframe_meshes_to_objs.py) (Tested in Maya2019)
+  - Python Script with maya.cmds: [maya_export_keyframe_meshes_to_objs_with_names.py](./maya_export_keyframe_meshes_to_objs_with_names.py) (Tested in Maya2019)
 
 - Export __keyframe__ blendshape weight values into .json file
   - Python Script with maya.cmds: [maya_export_keyframe_blendshape_weight_values.py](./maya_export_keyframe_blendshape_weight_values.py) (Tested in Maya2019)
+  - Python Script with maya.cmds: [maya_export_keyframe_blendshape_weight_values_with_names.py](./maya_export_keyframe_blendshape_weight_values_with_names.py) (Tested in Maya2019)
 
 - Export __keyframe__ joints values into .json file
   - Python Script with maya.cmds: [maya_export_keyframe_joint_values.py](./maya_export_keyframe_joint_values.py) (Tested in Maya2019)
