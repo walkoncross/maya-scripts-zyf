@@ -93,7 +93,7 @@ def export_blendshape_keys(blendshape_node_name, save_dir='./'):
 
 
 if __name__ == '__main__':
-    blendshape_node_name = r'AI_TD_01_Head01_blendShape'
-    save_dir = r'/Users/zhaoyafei/Downloads/bs_definition_3D_face/yuanli_bs_tang'
+    blendshape_node_name = r'Head01_blendShape'
+    save_dir = r'/Users/zhaoyafei/Downloads/bs_definition_3D_face/maya_exports'
 
     export_blendshape_keys(blendshape_node_name, save_dir)

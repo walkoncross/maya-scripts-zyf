@@ -151,7 +151,7 @@ def export_keyframe_joint_values(root_joint_node_name, save_dir='./',
 
 
 if __name__ == '__main__':
-    save_dir = r'/Users/zhaoyafei/Downloads/bs_definition_3D_face/yuanli_bs_tang2'
+    save_dir = r'/Users/zhaoyafei/Downloads/bs_definition_3D_face/maya_exports'
     # root_joint_node_name = 'all'
     root_joint_node_name = 'Hips'
 

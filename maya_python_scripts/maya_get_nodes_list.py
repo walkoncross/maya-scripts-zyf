@@ -489,10 +489,10 @@ def export_nodes_list(save_dir='./', show_type=True):
 
 
 if __name__ == '__main__':
-    # blendshape_node_name = r'AI_TD_01_Head01_blendShape'
-    # mesh_node_name = r'AI_TD_01_Head01Shape'
+    # blendshape_node_name = r'Head01_blendShape'
+    # mesh_node_name = r'Head01Shape'
 
-    save_dir = r'/Users/zhaoyafei/Downloads/bs_definition_3D_face/yuanli_bs_tang2'
+    save_dir = r'/Users/zhaoyafei/Downloads/bs_definition_3D_face/maya_exports'
     show_type = True
 
     export_nodes_list(save_dir, show_type)

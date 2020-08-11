@@ -128,10 +128,10 @@ def export_keyframe_meshes_into_objs(mesh_node_name, save_dir='./',
 
 
 if __name__ == '__main__':
-    save_dir = r'/Users/zhaoyafei/Downloads/bs_definition_3D_face/yuanli_bs_tang2'
-    # blendshape_node_name = r'AI_TD_01_Head01_blendShape'
+    save_dir = r'/Users/zhaoyafei/Downloads/bs_definition_3D_face/maya_exports'
+    # blendshape_node_name = r'Head01_blendShape'
     # mesh_node_name = get_blendshape_geometry_name(blendshape_node_name)
     # pprint("===> mesh_node_name: {}".format(mesh_node_name))
-    mesh_node_name = r'AI_TD_01_Head01Shape'
+    mesh_node_name = r'Head01Shape'
 
     export_keyframe_meshes_into_objs(mesh_node_name, save_dir, start_frame=1, end_frame=27)
