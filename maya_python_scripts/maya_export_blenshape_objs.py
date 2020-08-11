@@ -168,7 +168,9 @@ def restore_settable_modification(settable_restore_info_list):
 def export_blendshape_target_shapes(blendshape_node_name,
                                     mesh_node_name,
                                     save_dir='./',
-                                    blendshape_keys_list=None):
+                                    blendshape_keys_list=None,
+                                    force_triangulate=False,
+                                    skip_existing_files=True):
     """
     Export target shapes into .obj files for a blendshape node (name of target-shapes/morphing-targets).
 
@@ -237,77 +239,108 @@ def export_blendshape_target_shapes(blendshape_node_name,
         exit()
 
     # 1. Export the neutral pose.
-    pprint('===> Export the neutral pose.')
-    curr_time = 0
-    for k in blendshape_keys_list:
-        v = 0.
-        key_name = "{}.{}".format(blendshape_node_name, k)
-
-        cmds.setAttr(key_name, v)
-        cmds.setKeyframe(key_name)
-
-    if isinstance(mesh_node_name, list):
-        cmd = "polyTriangulate -ch 1 " + ' '.join(mesh_node_name)    
-    else:
-        cmd = "polyTriangulate -ch 1 " + mesh_node_name
+    obj_filename = osp.join(save_dir, '00_neutral.obj')
+    pprint('===> Export the neutral pose into {}.'.format(obj_filename))
     
-    pprint('===> run MEL command: ')
-    pprint(cmd)
+    curr_time = 0
+    cmds.currentTime(curr_time)
 
-    mel.eval(cmd)
+    if osp.isfile(obj_filename) and skip_existing_files:
+        pprint('===> skip existing file: {}'.format(obj_filename))
+    else:
+        for k in blendshape_keys_list:
+            v = 0.
+            key_name = "{}.{}".format(blendshape_node_name, k)
 
-    # obj_filename = osp.join(save_dir, '00_neutral.obj')
-    # cmd = """file -force -options "groups=1;ptgroups=1;materials=1;smoothing=1;normals=1"
-    #               -typ "OBJexport" -pr -es {}";""".format(obj_filename)
+            cmds.setAttr(key_name, v)
+            cmds.setKeyframe(key_name)
 
-    cmd = """file -force -options "groups=1;ptgroups=1;materials=1;smoothing=1;normals=1" 
-                -typ "OBJexport" -pr -es " {}/{}.obj";""".format(save_dir, "00_neutral")
-    pprint('===> run MEL command: ')
-    pprint(cmd)
-    mel.eval(cmd)
+        # Select Mesh before export
+        cmds.select(mesh_node_name)
+
+        if force_triangulate:
+            pprint('===> Force to export triangulated mesh')
+            if isinstance(mesh_node_name, list):
+                cmd = "polyTriangulate -ch 1 " + ' '.join(mesh_node_name)    
+            else:
+                cmd = "polyTriangulate -ch 1 " + mesh_node_name
+        
+            pprint('===> run MEL command: ')
+            pprint(cmd)
+
+            mel.eval(cmd)
+        
+        cmd = """file -force -options "groups=1;ptgroups=1;materials=1;smoothing=1;normals=1"
+                    -typ "OBJexport" -pr -es " {}";""".format(obj_filename)
+
+        # cmd = """file -force -options "groups=1;ptgroups=1;materials=1;smoothing=1;normals=1" 
+        #             -typ "OBJexport" -pr -es " {}/{}.obj";""".format(save_dir, "00_neutral")
+        pprint('===> run MEL command: ')
+        pprint(cmd)
+        mel.eval(cmd)
 
     # 2. Export blendshape target shapes.
     # for curr_k in blendshape_keys_list[:5]:
     for curr_k in blendshape_keys_list:
+        obj_filename = osp.join(save_dir, curr_k+'.obj')
+    
         # if not curr_k.startswith('jaw'):
         #     continue
         pprint('===> Export the blendshape key: {}'.format(curr_k))
+
         curr_time += 1
         cmds.currentTime(curr_time)
 
-        for k in blendshape_keys_list:
-            v = 1.0 if curr_k == k else 0.
-            key_name = "{}.{}".format(blendshape_node_name, k)
-            cmds.setAttr(key_name, v)
-            cmds.setKeyframe(key_name)
-
-        if isinstance(mesh_node_name, list):
-            cmd = "polyTriangulate -ch 1 " + ' '.join(mesh_node_name)    
+        if osp.isfile(obj_filename) and skip_existing_files:
+            pprint('===> skip existing file: {}'.format(obj_filename))
         else:
-            cmd = "polyTriangulate -ch 1 " + mesh_node_name
-        pprint('===> run MEL command: ')
-        pprint(cmd)
-        mel.eval(cmd)
+            for k in blendshape_keys_list:
+                v = 1.0 if curr_k == k else 0.
+                key_name = "{}.{}".format(blendshape_node_name, k)
+                cmds.setAttr(key_name, v)
+                cmds.setKeyframe(key_name)
 
-        # obj_filename = osp.join(save_dir, curr_k+'.obj')
-        # cmd = """file -force -options "groups=1;ptgroups=1;materials=1;smoothing=1;normals=1"
-        #               -typ "OBJexport" -pr -es " {}";""".format(obj_filename)
-        cmd = """file -force -options "groups=1;ptgroups=1;materials=1;smoothing=1;normals=1" 
-                      -typ "OBJexport" -pr -es " {}/{}.obj";""".format(save_dir, curr_k)
-        pprint('===> run MEL command: ')
-        pprint(cmd)
-        mel.eval(cmd)
+            # Select Mesh before export
+            cmds.select(mesh_node_name)
+
+            if force_triangulate:
+                pprint('===> Force to export triangulated mesh')
+                if isinstance(mesh_node_name, list):
+                    cmd = "polyTriangulate -ch 1 " + ' '.join(mesh_node_name)    
+                else:
+                    cmd = "polyTriangulate -ch 1 " + mesh_node_name
+
+                pprint('===> run MEL command: ')
+                pprint(cmd)
+                mel.eval(cmd)
+
+            cmd = """file -force -options "groups=1;ptgroups=1;materials=1;smoothing=1;normals=1"
+                        -typ "OBJexport" -pr -es " {}";""".format(obj_filename)
+            # cmd = """file -force -options "groups=1;ptgroups=1;materials=1;smoothing=1;normals=1" 
+            #               -typ "OBJexport" -pr -es " {}/{}.obj";""".format(save_dir, curr_k)
+            pprint('===> run MEL command: ')
+            pprint(cmd)
+            mel.eval(cmd)
 
     if need_restore:
         restore_settable_modification(restore_info)
 
 
 if __name__ == '__main__':
-    save_dir = r'/Users/zhaoyafei/Downloads/bs_definition_3D_face/yuanli_bs_tang2'
+    save_dir = r'/Users/zhaoyafei/Downloads/bs_definition_3D_face/yuanli_tang_bs_vert_tri'
+    # save_dir = r'/Users/zhaoyafei/Downloads/bs_definition_3D_face/yuanli_tang_bs_vert_quad'
+    
     blendshape_node_name = r'AI_TD_01_Head01_blendShape'
+    pprint("===> blendshape_node_name: {}".format(blendshape_node_name))
+
     # mesh_node_name = r'AI_TD_01_Head01Shape'
     mesh_node_name = get_blendshape_geometry_name(blendshape_node_name)
     pprint("===> mesh_node_name: {}".format(mesh_node_name))
 
+    force_triangulate = True
+    skip_existing_files = True
+
     export_blendshape_target_shapes(
-        blendshape_node_name, mesh_node_name, save_dir)
+        blendshape_node_name, mesh_node_name, save_dir, 
+        force_triangulate=force_triangulate, 
+        skip_existing_files=skip_existing_files)
