@@ -1,0 +1,6 @@
+keyframe -edit -index ":" -valueChange 0 grp_transform.tx
+keyframe -edit -index ":" -valueChange 0 grp_transform.ty
+keyframe -edit -index ":" -valueChange 0 grp_transform.tz
+keyframe -edit -index ":" -valueChange 0 grp_transform.rx
+keyframe -edit -index ":" -valueChange 0 grp_transform.ry
+keyframe -edit -index ":" -valueChange 0 grp_transform.rz
