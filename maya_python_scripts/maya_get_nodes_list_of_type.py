@@ -120,7 +120,7 @@ def export_nodes_list(save_dir='./', show_type=True, node_types_list=None):
     scene_name = get_current_scene_name()
 
     node_types_filename = osp.join(
-        save_dir, '{}.node_types.txt'.format(scene_name))
+        save_dir, '{}.all_node_types.txt'.format(scene_name))
 
     pprint('\n===> get all node types')
 
@@ -128,13 +128,13 @@ def export_nodes_list(save_dir='./', show_type=True, node_types_list=None):
 
     pprint('---> node types list:')
     # pprint(all_node_types_list)
-    pprint('\n===> {} node types in total'.format(len(all_node_types_list)))
+    pprint('\n===> {} all node types in total'.format(len(all_node_types_list)))
 
-    pprint('\n===> save node types into file: ')
+    pprint('\n===> save all node types into file: ')
     pprint(node_types_filename)
     fp = open(node_types_filename, 'w')
     if len(node_types_list) > 0:
-        fp.write('\n'.join(node_types_list) + '\n')
+        fp.write('\n'.join(all_node_types_list) + '\n')
     fp.close()
 
     pprint('\n===> get all nodes')
@@ -161,6 +161,7 @@ def export_nodes_list(save_dir='./', show_type=True, node_types_list=None):
             # 'transform', 
             # 'shape',
             # 'geometryShape', 
+            'expression',
             'mesh', 
             'joint',
             'nurbsCurve', 
@@ -245,6 +246,7 @@ if __name__ == '__main__':
         # 'transform', 
         # 'shape',
         # 'geometryShape', 
+        'expression',
         'mesh', 
         'joint',
         'nurbsCurve', 
