@@ -233,7 +233,7 @@ def export_blendshape_target_shapes(blendshape_node_name,
         pprint('\n===> save blendshape restore info into file: ')
         pprint(restore_filename)
         fp = open(restore_filename, 'w')
-        fp.write(json.dumps(restore_info, indent=2))
+        fp.write(json.dumps(restore_info, indent=2) + '\n')
         fp.close()
     else:
         exit()
