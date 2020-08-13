@@ -59,8 +59,19 @@ def export_expression(expression_node_name, save_dir='./'):
     Returns: 
         None.
     """
+    print("===> save_dir: {}".format(save_dir))
+
+    if not osp.exists(save_dir):
+        os.makedirs(save_dir)
+
+    scene_name = get_current_scene_name()
+    # save_dir = osp.join(save_dir, scene_name+'_expressions')
+    # os.mkdir(save_dir)
     pprint('===> export expression: ' + expression_node_name)
-    save_filename = osp.join(save_dir, expression_node_name+'.txt')
+    # save_filename = osp.join(save_dir, expression_node_name+'.txt')
+    save_filename = osp.join(save_dir, '{}.expression.{}.txt'.format(
+        scene_name, expression_node_name))
+
     expression = cmds.getAttr(expression_node_name+'.expression')
     # pprint(expression)
 
@@ -83,13 +94,14 @@ def export_all_expressions(save_dir):
             Name list of all expressions.
 
     """
-    
+    print("===> save_dir: {}".format(save_dir))
+
     if not osp.exists(save_dir):
         os.makedirs(save_dir)
 
-    scene_name = get_current_scene_name()
-    save_dir = osp.join(save_dir, scene_name+'_expressions')
-    os.mkdir(save_dir)
+    # scene_name = get_current_scene_name()
+    # save_dir = osp.join(save_dir, scene_name+'_expressions')
+    # os.mkdir(save_dir)
 
     expression_list = get_all_expression_nodes()
 
@@ -98,5 +110,5 @@ def export_all_expressions(save_dir):
 
 
 if __name__ == '__main__':
-    save_dir = '/Users/zhaoyafei/work/maya-scripts-zyf/maya_exports/exported_expressions'
+    save_dir = '/Users/zhaoyafei/work/maya-scripts-zyf/maya_exports/'
     export_all_expressions(save_dir)
