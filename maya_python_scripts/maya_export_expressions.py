@@ -98,5 +98,5 @@ def export_all_expressions(save_dir):
 
 
 if __name__ == '__main__':
-    save_dir = '/Users/zhaoyafei/work/maya-scripts-zyf/exported_expressions'
+    save_dir = '/Users/zhaoyafei/work/maya-scripts-zyf/maya_exports/exported_expressions'
     export_all_expressions(save_dir)

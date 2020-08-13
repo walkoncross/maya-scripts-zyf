@@ -111,7 +111,7 @@ def export_blendshape_keys(blendshape_node_name, save_dir='./'):
     pprint('\n===> save blendshape keys into file: ')
     pprint(blendshape_keys_filename)
     fp = open(blendshape_keys_filename, 'w')
-    fp.write('\n'.join(blendshape_keys_list))
+    fp.write('\n'.join(blendshape_keys_list) + '\n')
     fp.close()
 
 
