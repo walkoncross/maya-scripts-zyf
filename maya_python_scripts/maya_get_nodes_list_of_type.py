@@ -99,9 +99,9 @@ def get_nodes_list_of_type(node_type, show_type=True):
     return nodes_list
 
 
-def export_nodes_list(save_dir='./', show_type=True):
+def export_nodes_list(save_dir='./', show_type=True, node_types_list=None):
     """
-    Export differnet type of nodes.
+    Export nodes list of specified type.
 
     Args:
         save_dir: str
@@ -124,11 +124,11 @@ def export_nodes_list(save_dir='./', show_type=True):
 
     pprint('\n===> get all node types')
 
-    node_types_list = get_node_types()
+    all_node_types_list = get_node_types()
 
-    pprint('---> all node types:')
-    # pprint(node_types_list)
-    pprint('\n===> {} node types in total'.format(len(node_types_list)))
+    pprint('---> node types list:')
+    # pprint(all_node_types_list)
+    pprint('\n===> {} node types in total'.format(len(all_node_types_list)))
 
     pprint('\n===> save node types into file: ')
     pprint(node_types_filename)
@@ -156,32 +156,62 @@ def export_nodes_list(save_dir='./', show_type=True):
         fp.write('\n'.join(nodes_list) + '\n')
     fp.close()
 
-    node_types_list = ['transform', 'shape',
-                       'geometryShape', 'mesh',
-                       'nurbsCurve', 'nurbsSurface',
-                       'blendShape', 'joint',
-                       'lattice', 'jiggle', 'deltaMush',
-                       'tweak',
-                       'skinCluster', 'jointCluster',
-                       'animCurve',
-                       'locator', 'lookAt',
-                       'constraint',
-                       'parentConstraint', 'pointConstraint',
-                       #    'scaleConstraint', 'orientConstraint',
-                       #    'aimConstraint', 'dynamicConstraint',
-                       #    'geometryConstraint', 'symmetryConstraint',
-                       #    'tangentConstraint', 'normalConstraint',
-                       #    'rigidConstraint', 'hairConstraint',
-                       'material', 'texture',
-                       #    'lambert', 'phong',
-                       'camera', 'light',
-                       #    'pointLight', 'spotLight',
-                       #    'volumeLight', 'areaLight',
-                       #    'ambientLight', 'directionalLight',
-                       #    'plane',
-                       #    'objectSet', 'partition',
-                       #    'container'
-                       ]
+    if not node_types_list:
+        node_types_list = [
+            # 'transform', 
+            # 'shape',
+            # 'geometryShape', 
+            'mesh', 
+            'joint',
+            'nurbsCurve', 
+            'nurbsSurface',
+            'blendShape',
+            'lattice', 
+            'jiggle', 
+            'deltaMush',
+            # 'tweak',
+            # 'skinCluster', 
+            # 'jointCluster',
+            'animCurve',
+            'locator', 
+            'constraint', # all kinds of constraints
+            'lookAt', # one kind of aimConstraint
+            # 'parentConstraint',
+            # 'pointConstraint',
+            # 'orientConstraint',
+            # 'scaleConstraint',
+            # 'aimConstraint',
+            # 'poleVectorConstraint',
+            # 'geometryConstraint',
+            # 'tangentConstraint',
+            # 'normalConstraint',
+            # 'oldGeometryConstraint',
+            # 'oldNormalConstraint',
+            # 'oldTangentConstraint',
+            # 'pointOnPolyConstraint',
+            # 'symmetryConstraint',
+            # 'dynamicConstraint',
+            # 'rigidConstraint',
+            # 'hairConstraint',
+            # 'MASH_Constraint',
+            # 'cMuscleSmartConstraint',
+            'material', 
+            'texture',
+            # 'lambert', 
+            # 'phong',
+            'camera', 
+            'light',
+            # 'pointLight', 
+            # 'spotLight',
+            # 'volumeLight', 
+            # 'areaLight',
+            # 'ambientLight', 
+            # 'directionalLight',
+            # 'plane',
+            # 'objectSet', 
+            # 'partition',
+            # 'container'
+        ]
 
     for node_type in node_types_list:
         pprint('\n===> save nodes of type {}'.format(node_type))
@@ -211,4 +241,59 @@ if __name__ == '__main__':
     save_dir = r'/Users/zhaoyafei/Downloads/bs_definition_3D_face/maya_exports'
     show_type = True
 
-    export_nodes_list(save_dir, show_type)
+    node_types_list = [
+        # 'transform', 
+        # 'shape',
+        # 'geometryShape', 
+        'mesh', 
+        'joint',
+        'nurbsCurve', 
+        'nurbsSurface',
+        'blendShape',
+        'lattice', 
+        'jiggle', 
+        'deltaMush',
+        # 'tweak',
+        # 'skinCluster', 
+        # 'jointCluster',
+        'animCurve',
+        'locator', 
+        'constraint', # all kinds of constraints
+        'lookAt', # one kind of aimConstraint
+        'parentConstraint',
+        'pointConstraint',
+        'orientConstraint',
+        'scaleConstraint',
+        'aimConstraint',
+        'poleVectorConstraint',
+        'geometryConstraint',
+        'tangentConstraint',
+        'normalConstraint',
+        'oldGeometryConstraint',
+        'oldNormalConstraint',
+        'oldTangentConstraint',
+        'pointOnPolyConstraint',
+        # 'symmetryConstraint',
+        # 'dynamicConstraint',
+        # 'rigidConstraint',
+        # 'hairConstraint',
+        # 'MASH_Constraint',
+        # 'cMuscleSmartConstraint',
+        'material', 
+        'texture',
+        # 'lambert', 
+        # 'phong',
+        'camera', 
+        'light',
+        # 'pointLight', 
+        # 'spotLight',
+        # 'volumeLight', 
+        # 'areaLight',
+        # 'ambientLight', 
+        # 'directionalLight',
+        # 'plane',
+        # 'objectSet', 
+        # 'partition',
+        # 'container'
+    ]
+    export_nodes_list(save_dir, show_type, node_types_list)
