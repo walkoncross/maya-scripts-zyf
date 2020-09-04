@@ -1,0 +1,62 @@
+////////////////////////////////////////////////////////////////////////////////////////
+// reset to T-pose for HumanIK skeleton mapping
+select -r R_arm_fk_ctrl;
+setAttr "R_arm_fk_ctrl.rotateX" 0;
+setAttr "R_arm_fk_ctrl.rotateY" 45;
+setAttr "R_arm_fk_ctrl.rotateZ" 5;
+
+select -r L_arm_fk_ctrl;
+setAttr "L_arm_fk_ctrl.rotateX" 0;
+setAttr "L_arm_fk_ctrl.rotateY" 45;
+setAttr "L_arm_fk_ctrl.rotateZ" 5;
+
+select -r R_lowarm_fk_ctrl;
+setAttr "R_lowarm_fk_ctrl.rotateX" 0;
+setAttr "R_lowarm_fk_ctrl.rotateY" 0;
+setAttr "R_lowarm_fk_ctrl.rotateZ" -18;
+
+select -r L_lowarm_fk_ctrl;
+setAttr "L_lowarm_fk_ctrl.rotateX" 0;
+setAttr "L_lowarm_fk_ctrl.rotateY" 0;
+setAttr "L_lowarm_fk_ctrl.rotateZ" -18;
+
+////////////////////////////////////////////////////////////////////////////////////////
+// enable IK controls for legs for HumanIK control rigs mapping
+setAttr "R_leg_switch_ctrl.ikfk" 0;
+setAttr "L_leg_switch_ctrl.ikfk" 0;
+
+////////////////////////////////////////////////////////////////////////////////////////
+// the following are switch tests witch are not required for HumanIK mapping
+// enable IK controls for arms
+setAttr "R_arm_switch_ctrl.ikfk" 0;
+setAttr "L_arm_switch_ctrl.ikfk" 0;
+
+// make visable IK controls for neck
+setAttr "neck_1_ctrl.ikVis" 1;
+
+// make visable IK controls for body (spine/hips)
+setAttr "body_ctrl.ikVis" 1;
+
+// make visable head aim contrl curve
+setAttr "head_ctrl.aimVis" 1;
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+// disable IK controls for legs
+setAttr "R_leg_switch_ctrl.ikfk" 1;
+setAttr "L_leg_switch_ctrl.ikfk" 1;
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+// disable IK controls for arms
+setAttr "R_arm_switch_ctrl.ikfk" 1;
+setAttr "L_arm_switch_ctrl.ikfk" 1;
+
+// make invisable IK controls for neck
+setAttr "neck_1_ctrl.ikVis" 0;
+
+// make invisable IK controls for body (spine/hips)
+setAttr "body_ctrl.ikVis" 0;
+
+// make invisable head aim contrl curve
+setAttr "head_ctrl.aimVis" 0;

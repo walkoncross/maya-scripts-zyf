@@ -1,0 +1,24 @@
+//////////////////////////
+// Load a mixamo animation .fbx file, retarget into new character, export into a output .fbx file.
+string $input_fbx="/Users/zhaoyafei/Downloads/3D_model_assets/adobe-mixamo-characters/x_bot/Hip Hop Dancing.fbx";
+select -r mixamo_xbot1;
+FBXImport -f $input_fbx;
+
+// Open HumanIK window (Windows->Animation->HumanIK),
+// Select HumanIK-mapped "character", and the "source" (i.e. driver character, adobe mixamo character here).
+// And then run the following Mel commands
+
+$output_fbx = $input_fbx+".retarget_out.fbx";
+print("===> Export fbx into: " + $output_fbx);
+
+$start_time = 0;
+$end_time = 240;
+
+currentTime 0;
+select -r AI_TD_01_grp ;
+FBXExportAnimationOnly -v true;
+FBXExportBakeComplexAnimation -v true;
+FBXExportBakeComplexStart -v $start_time;
+FBXExportBakeComplexEnd -v $end_time;
+FBXExportBakeComplexStep -v 1;
+FBXExport -f $output_fbx -s;
