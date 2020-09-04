@@ -1,0 +1,20 @@
+string $driving_joint_root = "mixamorig:Hips";
+string $driven_node = "AI_TD_01_grp";
+string $export_filename = "movies/tang_samba_funky2";
+
+int $start_time = 0;
+//int $end_time = 300;
+
+string $driving_joint_root_attr = $driving_joint_root + ".tx";
+$num_frames = `keyframe -q -keyframeCount $driving_joint_root_attr`;
+$end_time = $num_frames - 1;
+
+currentTime 0;
+
+string $isolated_panel = `paneLayout -q -pane1 viewPanes`;
+isolateSelect -state 0 $isolated_panel;
+
+select -r $driven_node;
+isolateSelect -state 1 $isolated_panel;
+
+playblast -filename $export_filename -offScreen -startTime $start_time -endTime $end_time  -format avfoundation  -sequenceTime 0 -clearCache 1 -viewer 1 -showOrnaments 1 -fp 4 -percent 100 -compression "H.264" -quality 70;

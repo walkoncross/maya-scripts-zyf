@@ -1,0 +1,32 @@
+string $driving_joint_root = "mixamorig:Hips";
+string $driven_node = "AI_TD_01_grp";
+string $export_filename = "movies/tang_samba_funky2";
+
+int $start_time = 0;
+//int $end_time = 300;
+
+//string $driven_node = $driving_joint_root;
+//select -r $driving_joint_root;
+
+string $driving_joint_root_attr = $driving_joint_root + ".tx";
+$num_frames = `keyframe -q -keyframeCount $driving_joint_root_attr`;
+$end_time = $num_frames - 1;
+
+playbackOptions -animationStartTime $start_time -animationEndTime $end_time -minTime $start_time -maxTime $end_time ;
+currentTime 0;
+
+//toggleVisibilityAndKeepSelection `optionVar -query toggleVisibilityAndKeepSelectionBehaviour`;
+//toggleVisibilityAndKeepSelection `optionVar -query toggleVisibilityAndKeepSelectionBehaviour`;
+
+string $isolated_panel = `paneLayout -q -pane1 viewPanes`;
+isolateSelect -state 0 $isolated_panel;
+
+select -r $driven_node;
+//editor -edit -lockMainConnection -mainListConnection "activeList" $isolated_panel;
+
+isolateSelect -state 1 $isolated_panel;
+//editor -edit -mainListConnection "activeList" $isolated_panel;
+//isolateSelect -loadSelected $isolated_panel;
+
+//playblast  -format avfoundation -sequenceTime 0 -clearCache 1 -viewer 1 -showOrnaments 1 -fp 4 -percent 100 -compression "Photo - JPEG" -quality 70;
+playblast -filename $export_filename -offScreen -startTime $start_time -endTime $end_time  -format avfoundation  -sequenceTime 0 -clearCache 1 -viewer 1 -showOrnaments 1 -fp 4 -percent 100 -compression "H.264" -quality 70;
