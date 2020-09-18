@@ -1,0 +1,2 @@
+string $input_fbx="/Users/zhaoyafei/Downloads/3D_model_assets/adobe-mixamo-characters/x_bot/Hip Hop Dancing.fbx";
+FBXImport -f $input_fbx;

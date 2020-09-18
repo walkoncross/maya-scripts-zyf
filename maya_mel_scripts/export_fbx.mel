@@ -1,0 +1,15 @@
+//////////////////////////
+string $root_node="AI_TD_01_grp"
+$start_time = 0;
+$end_time = 240;
+$output_fbx = "output.fbx";
+print("===> Export fbx into: " + $output_fbx);
+
+currentTime 0;
+select -r $skeleton_root;
+//FBXExportAnimationOnly -v true;
+FBXExportBakeComplexAnimation -v true;
+FBXExportBakeComplexStart -v $start_time;
+FBXExportBakeComplexEnd -v $end_time;
+FBXExportBakeComplexStep -v 1;
+FBXExport -f $output_fbx -s;
