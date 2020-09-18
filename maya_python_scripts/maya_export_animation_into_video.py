@@ -180,3 +180,7 @@ if __name__ == '__main__':
         start_time, 
         end_time
     )
+
+    print('='*32)
+    print('===> video saved into: ', video_path)
+    print('='*32)

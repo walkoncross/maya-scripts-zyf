@@ -71,6 +71,28 @@ def get_keyframe_count_for_node(node_name, trans_attr=True, rotate_attr=False, a
     return num_frames
 
 
+def load_animation_from_fbx(fbx_path):
+    """Load animation from .fbx file.
+
+    Args: 
+        fbx_path: str
+            Path to .fbx file.
+
+    Returns: 
+        No returns.
+    """
+    base_name = osp.splitext(osp.basename(fbx_path))[0]
+    name_space = base_name.replace(' ', '_')
+
+    # cmd_str = 'FBXImport -f "{}" ;'.format(fbx_path) # Failed
+    cmd_str = ('file -import -type "FBX"  -ignoreVersion -ra true -mergeNamespacesOnClash false -namespace "{}" -options "fbx"  -pr  -importTimeRange "combine" "{}" ;'.format(name_space, fbx_path))
+    pprint('===> run command: ')
+    pprint(cmd_str)
+    mel.eval(cmd_str)
+
+    cmds.currentTime(0)
+
+
 def export_animation_into_fbx(
     root_node_name,
     save_dir='./',
@@ -103,7 +125,8 @@ def export_animation_into_fbx(
 
     scene_name = get_current_scene_name()
     if not save_filename:
-        save_filename = '{}.animation.{}.fbx'.format(scene_name, root_node_name.replace(':', '-'))
+        save_filename = '{}.animation.{}.fbx'.format(
+            scene_name, root_node_name.replace(':', '-'))
     elif not save_filename.endswith('.fbx'):
         save_filename += '.fbx'
 
@@ -179,28 +202,45 @@ def export_animation_into_fbx(
 
 if __name__ == '__main__':
     save_dir = r'/Users/zhaoyafei/work/maya-scripts-zyf/maya_exports'
-    save_filename = r''
- 
+    # input_fbx = r'‎/Volumes/seagate2Tz/backup/Downloads/3D_model_assets/adobe-mixamo-characters/xbot_dance_animations_noskin_30fps/Salsa Dance Variation Five.fbx'
+    fbx_list_fn = r'‎./fbx_list.txt'
+
     keyframe_node_name = r'mixamorig:Hips'
     export_node_name = r'AI_TD_01_grp'
-    start_time = 0
-    # end_time = 240
 
-    keyframe_count = get_keyframe_count_for_node(
-        keyframe_node_name, 
-        trans_attr=True, 
-        rotate_attr=False
-    )
-    end_time = keyframe_count - 1
+    fbx_file_list = []
 
-    fbx_path = export_animation_into_fbx(
-        export_node_name, 
-        save_dir, 
-        save_filename, 
-        start_time, 
-        end_time
-    )
-    
-    print('='*32)
-    print('===> fbx saved into: ', fbx_path)
-    print('='*32)
+    with open(fbx_list_fn, 'r') as fp:
+        for line in fp:
+            input_fbx = line.strip()
+            fbx_file_list.append(input_fbx)
+
+        fp.close()
+
+    for input_fbx in fbx_file_list:
+        base_name = osp.splitext(osp.basename(input_fbx))[0]
+        save_filename = base_name.replace(' ', '_') + '.fbx'
+
+        start_time = 0
+        # end_time = 240
+
+        load_animation_from_fbx(input_fbx)
+
+        keyframe_count = get_keyframe_count_for_node(
+            keyframe_node_name,
+            trans_attr=True,
+            rotate_attr=False
+        )
+        end_time = keyframe_count - 1
+
+        fbx_path = export_animation_into_fbx(
+            export_node_name,
+            save_dir,
+            save_filename,
+            start_time,
+            end_time
+        )
+
+        print('='*32)
+        print('===> fbx saved into: ', fbx_path)
+        print('='*32)
