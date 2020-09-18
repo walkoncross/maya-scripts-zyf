@@ -130,8 +130,9 @@ def export_animation_into_video(
     scene_name = get_current_scene_name()
 
     if not save_filename:
-        save_filename = '{}.animation.{}'.format(scene_name, root_node_name.replace(':', '-'))
-    
+        save_filename = '{}.animation.{}'.format(
+            scene_name, root_node_name.replace(':', '-'))
+
     output_filename = osp.join(save_dir, save_filename)
     pprint("===> output file: {}".format(output_filename))
 
@@ -154,7 +155,7 @@ def export_animation_into_video(
 
     playblast -filename $export_filename -offScreen -startTime $start_time -endTime $end_time  -format avfoundation  -sequenceTime 0 -clearCache 1 -viewer 1 -showOrnaments 1 -fp 4 -percent 100 -compression "H.264" -quality 70;
     """
-    # isolate selected object (make it the only active one) 
+    # isolate selected object (make it the only active one)
     isolated_panel = cmds.paneLayout("viewPanes", query=True, pane1=True)
     cmds.isolateSelect(isolated_panel, state=True)
     cmds.isolateSelect(isolated_panel, update=True)
@@ -162,13 +163,14 @@ def export_animation_into_video(
     cmds.select(root_node_name, replace=True)
     cmds.isolateSelect(isolated_panel, loadSelected=True)
 
-    cmd_str = 'playblast -filename "{}" -offScreen -startTime {} -endTime {} -format avfoundation  -sequenceTime 0 -clearCache 1 -viewer 1 -showOrnaments 1 -fp 4 -percent 100 -compression "H.264" -quality 70;'.format(output_filename, start_time, end_time)
+    cmd_str = 'playblast -filename "{}" -offScreen -startTime {} -endTime {} -format avfoundation  -sequenceTime 0 -clearCache 1 -viewer 1 -showOrnaments 1 -fp 4 -percent 100 -compression "H.264" -quality 70;'.format(
+        output_filename, start_time, end_time)
     pprint('===> run command: ')
     pprint(cmd_str)
 
     # de-isolate
     cmds.isolateSelect(isolated_panel, state=False)
-    
+
     output_filename = mel.eval(cmd_str)
 
     output_filename = osp.abspath(output_filename)
@@ -194,17 +196,17 @@ if __name__ == '__main__':
     load_animation_from_fbx(input_fbx)
 
     keyframe_count = get_keyframe_count_for_node(
-        keyframe_node_name, 
-        trans_attr=True, 
+        keyframe_node_name,
+        trans_attr=True,
         rotate_attr=False
     )
     end_time = keyframe_count - 1
 
     video_path = export_animation_into_video(
-        export_node_name, 
-        save_dir, 
-        save_filename, 
-        start_time, 
+        export_node_name,
+        save_dir,
+        save_filename,
+        start_time,
         end_time
     )
 

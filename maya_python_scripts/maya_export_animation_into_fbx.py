@@ -103,7 +103,8 @@ def export_animation_into_fbx(
 
     scene_name = get_current_scene_name()
     if not save_filename:
-        save_filename = '{}.animation.{}.fbx'.format(scene_name, root_node_name.replace(':', '-'))
+        save_filename = '{}.animation.{}.fbx'.format(
+            scene_name, root_node_name.replace(':', '-'))
     elif not save_filename.endswith('.fbx'):
         save_filename += '.fbx'
 
@@ -180,27 +181,27 @@ def export_animation_into_fbx(
 if __name__ == '__main__':
     save_dir = r'/Users/zhaoyafei/work/maya-scripts-zyf/maya_exports'
     save_filename = r''
- 
+
     keyframe_node_name = r'mixamorig:Hips'
     export_node_name = r'AI_TD_01_grp'
     start_time = 0
     # end_time = 240
 
     keyframe_count = get_keyframe_count_for_node(
-        keyframe_node_name, 
-        trans_attr=True, 
+        keyframe_node_name,
+        trans_attr=True,
         rotate_attr=False
     )
     end_time = keyframe_count - 1
 
     fbx_path = export_animation_into_fbx(
-        export_node_name, 
-        save_dir, 
-        save_filename, 
-        start_time, 
+        export_node_name,
+        save_dir,
+        save_filename,
+        start_time,
         end_time
     )
-    
+
     print('='*32)
     print('===> fbx saved into: ', fbx_path)
     print('='*32)

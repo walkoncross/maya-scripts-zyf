@@ -93,6 +93,113 @@ def load_animation_from_fbx(fbx_path):
     cmds.currentTime(0)
 
 
+def export_animation_into_fbx(
+    root_node_name,
+    save_dir='./',
+    save_filename='',
+    start_time=0,
+    end_time=240
+):
+    """Export animation of a node into .fbx file.
+
+    Args:
+        root_node_name: str
+            Name of root joint.
+        save_dir: str
+            Directory to save .fbx files.
+        save_filename: str
+            Video filename. The full file path is : {save_dir}/{save_filename}
+        start_time: int
+            Start frame of animation
+        end_time: int
+            End frame of animation
+
+    Returns: 
+        None.
+    """
+    pprint("===> root_node_name: {}".format(root_node_name))
+    pprint("===> save_dir: {}".format(save_dir))
+
+    if not osp.exists(save_dir):
+        os.makedirs(save_dir)
+
+    scene_name = get_current_scene_name()
+    if not save_filename:
+        save_filename = '{}.animation.{}.fbx'.format(
+            scene_name, root_node_name.replace(':', '-'))
+    elif not save_filename.endswith('.fbx'):
+        save_filename += '.fbx'
+
+    output_filename = osp.join(save_dir, save_filename)
+
+    pprint("===> output file: {}".format(output_filename))
+
+    # num_frames = cmds.keyframe(root_node_name, q=True, keyframeCount=True) / 6
+    # num_frames = get_keyframe_count(root_node_name)
+    # pprint('===> {} keyframes in total'.format(num_frames))
+
+    pprint('===> start_time: {}'.format(start_time))
+    pprint('===> end_time: {}'.format(end_time))
+
+    cmds.currentTime(0)
+    cmds.select(root_node_name, replace=True)
+
+    # mel.eval('FBXExportAnimationOnly -v true;')
+    # mel.eval('FBXExportBakeComplexAnimation -v true;')
+    # mel.eval('FBXExportBakeComplexStart -v 0;')
+    # mel.eval('FBXExportBakeComplexEnd -v {};'.format(num_frames))
+    # mel.eval('FBXExportBakeComplexStep -v 1;')
+    # mel.eval('FBXExport -f "{}" -s;'.format(output_filename))
+
+    # cmd_str = """
+    #     FBXExportAnimationOnly -v true;
+    #     FBXExportBakeComplexAnimation -v true;
+    #     FBXExportBakeComplexStart -v 0;
+    #     FBXExportBakeComplexEnd -v {};
+    #     FBXExportBakeComplexStep -v 1;
+    #     FBXExport -f "{}" -s;
+    # """.format(num_frames, output_filename)
+
+    # pprint('===> run command: ')
+    # pprint(cmd_str)
+    # mel.eval(cmd_str)
+
+    cmd_str = 'FBXExportAnimationOnly -v true;'
+    pprint('===> run command: ')
+    pprint(cmd_str)
+    mel.eval(cmd_str)
+
+    cmd_str = 'FBXExportBakeComplexAnimation - v true;'
+    pprint('===> run command: ')
+    pprint(cmd_str)
+    mel.eval(cmd_str)
+
+    cmd_str = 'FBXExportBakeComplexStart - v {};'.format(start_time)
+    pprint('===> run command: ')
+    pprint(cmd_str)
+    mel.eval(cmd_str)
+
+    cmd_str = 'FBXExportBakeComplexEnd -v {};'.format(end_time)
+    pprint('===> run command: ')
+    pprint(cmd_str)
+    mel.eval(cmd_str)
+
+    cmd_str = 'FBXExportBakeComplexStep - v 1;'
+    pprint('===> run command: ')
+    pprint(cmd_str)
+    mel.eval(cmd_str)
+
+    cmd_str = 'FBXExport -f "{}" -s;'.format(output_filename)
+    pprint('===> run command: ')
+    pprint(cmd_str)
+    mel.eval(cmd_str)
+
+    output_filename = osp.abspath(output_filename)
+    pprint("===> full path of output file: {}".format(output_filename))
+
+    return output_filename
+
+
 def export_animation_into_video(
     root_node_name,
     save_dir='./',
@@ -211,6 +318,18 @@ if __name__ == '__main__':
             rotate_attr=False
         )
         end_time = keyframe_count - 1
+
+        fbx_path = export_animation_into_fbx(
+            export_node_name,
+            save_dir,
+            save_filename,
+            start_time,
+            end_time
+        )
+
+        print('='*32)
+        print('===> fbx saved into: ', fbx_path)
+        print('='*32)
 
         video_path = export_animation_into_video(
             export_node_name,
