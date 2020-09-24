@@ -93,7 +93,8 @@ def export_animation_into_video(
         start_time: int
             Start frame of animation
         end_time: int
-            End frame of animation
+            End frame of animation.
+            If end_time<start_time or end_time<0, will use "setPlaybackRangeToMinMax" to set start_time and end_time automatically.
 
     Returns: 
         Full absolute path of saved file.
@@ -141,10 +142,18 @@ def export_animation_into_video(
     cmds.select(root_node_name, replace=True)
     cmds.isolateSelect(isolated_panel, loadSelected=True)
 
-    cmd_str = 'playblast -filename "{}" -offScreen -startTime {} -endTime {} -format avfoundation  -sequenceTime 0 -clearCache 1 -viewer 1 -showOrnaments 1 -fp 4 -percent 100 -compression "H.264" -quality 70;'.format(
-        output_filename, start_time, end_time)
-    pprint('===> run command: ')
-    pprint(cmd_str)
+    if end_time < start_time or end_time <= 0:
+        pprint('===> setPlaybackRangeToMinMax')
+        mel.eval('setPlaybackRangeToMinMax')
+        cmd_str = 'playblast -filename "{}" -offScreen -format avfoundation  -sequenceTime 0 -clearCache 1 -viewer 1 -showOrnaments 1 -fp 4 -percent 100 -compression "H.264" -quality 70;'.format(
+            output_filename, start_time, end_time)
+        pprint('===> run command: ')
+        pprint(cmd_str)
+    else:
+        cmd_str = 'playblast -filename "{}" -offScreen -startTime {} -endTime {} -format avfoundation  -sequenceTime 0 -clearCache 1 -viewer 1 -showOrnaments 1 -fp 4 -percent 100 -compression "H.264" -quality 70;'.format(
+            output_filename, start_time, end_time)
+        pprint('===> run command: ')
+        pprint(cmd_str)
 
     # de-isolate
     cmds.isolateSelect(isolated_panel, state=False)
@@ -159,21 +168,21 @@ def export_animation_into_video(
 
 if __name__ == '__main__':
     save_dir = r'/Users/zhaoyafei/work/maya-scripts-zyf/maya_exports'
-    save_filename = r'mixamo_xbot'
+    save_filename = r'zhizao-nature-head'
 
-    keyframe_node_name = r'mixamorig:Hips'
-    export_node_name = r'AI_TD_01_grp'
+    export_node_name = r'nature'
     # export_node_name = r'mixamo_xbot1'
     # export_node_name = keyframe_node_name
     start_time = 0
-    # end_time = 240
+    end_time = -1
 
-    keyframe_count = get_keyframe_count_for_node(
-        keyframe_node_name,
-        trans_attr=True,
-        rotate_attr=False
-    )
-    end_time = keyframe_count - 1
+    # keyframe_node_name = r'mixamorig:Hips'
+    # keyframe_count = get_keyframe_count_for_node(
+    #     keyframe_node_name,
+    #     trans_attr=True,
+    #     rotate_attr=False
+    # )
+    # end_time = keyframe_count - 1
 
     video_path = export_animation_into_video(
         export_node_name,
