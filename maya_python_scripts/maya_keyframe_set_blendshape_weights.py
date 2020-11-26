@@ -39,29 +39,6 @@ def get_blendshape_keys_list(blendshape_node_name):
     return blendshape_keys_list
 
 
-def unlock_blendshape_keys(blendshape_node_name, blendshape_keys_list=None):
-    """
-    Get name list of blendshape keys (name of target-shapes/morphing-targets).
-
-    Args:
-        blendshape_node_name: str
-            Name of blend shape deformer (blendShape Node) in Maya.
-        blendshape_keys_list: list of str
-            List of blendshape keys (weight names).
-
-    Returns: 
-        None.
-    """
-
-    if blendshape_keys_list is None:
-        blendshape_keys_list = get_blendshape_keys_list(blendshape_node_name)
-
-    for k in blendshape_keys_list:
-        key_name = "{}.{}".format(blendshape_node_name, k)
-        v = 0.
-        cmds.setAttr(key_name, v)
-
-
 def set_blendshape_keyframe(mesh_node_name, blendshape_node_name,
                             frame_number, blendshape_values_dict, blendshape_keys_list=None):
     """
