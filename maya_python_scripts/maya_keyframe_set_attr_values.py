@@ -1,6 +1,6 @@
 # coding=utf-8
 # """
-# Export .obj files for target shapes for a blendshape node in Maya.
+# Export .obj files for all blendshape weights in Maya.
 
 # Author: Zhao Yafei (zhaoyafei0210@gmail.com)
 # """
@@ -9,6 +9,7 @@ import os.path as osp
 import json
 import maya.cmds as cmds
 import maya.mel as mel
+
 from pprint import pprint
 
 
@@ -221,162 +222,121 @@ def restore_settable_modification(restore_info):
             key_name, keyable=restore_info_dict["keyable"], lock=restore_info_dict["lock"])
 
 
-def export_blendshape_target_shapes(blendshape_node_name,
-                                    mesh_node_name,
-                                    save_dir='./',
-                                    blendshape_keys_list=None,
-                                    force_triangulate=False,
-                                    skip_existing_files=True):
+def set_blendshape_keyframe(mesh_node_name, blendshape_node_name,
+                            frame_number, blendshape_values_dict, blendshape_keys_list=None):
     """
-    Export target shapes into .obj files for a blendshape node (name of target-shapes/morphing-targets).
+    Set blendshape keyframe at frame #frame_number.
 
     Args:
-        blendshape_node_name: str
-            Name of blend shape deformer (blendShape Node) in Maya.
-        mesh_node_name: str or list of str
+        mesh_node_name: str
             Name of mesh/shape in Maya;
-        save_dir: str
-            Directory to save .obj files for all target shapes of a blendshape node.
+        blendshape_node_name: str
+            Name of blendshape deformer in Maya;
+        frame_number: int
+            Frame number (>0)
+        blendshape_values_dict: dict
+            Values for blendshape weights, a dict
         blendshape_keys_list: list of str or None
-            List of blendshape keys  (names of target shapes) to export. If =None, export all target shapes.
+            List of blendshape keys (weight names);
 
     Returns: 
         None.
     """
-    pprint("===> blendshape_node_name: {}".format(blendshape_node_name))
-    pprint("===> mesh_node_name: {}".format(mesh_node_name))
-
-    if not osp.exists(save_dir):
-        os.makedirs(save_dir)
-
-    scene_name = get_current_scene_name()
-    blendshape_keys_filename = osp.join(
-        save_dir, '{}.blendshape.{}.txt'.format(scene_name, blendshape_node_name))
 
     if blendshape_keys_list is None:
         blendshape_keys_list = get_blendshape_keys_list(blendshape_node_name)
 
-    for idx, blendshape in enumerate(blendshape_keys_list):
-        pprint('---> {}: {}'.format(idx+1, blendshape))
+    cmds.currentTime(frame_number)
+    cmds.select(mesh_node_name, replace=True)
 
-    pprint('\n===> {} blendshape keys in total'.format(len(blendshape_keys_list)))
+    # 0. Reset to Neutral pose.
+    # for k in blendshape_keys_list:
+    #     key_name = "{}.{}".format(blendshape_node_name, k)
+    #     v = 0.
+    #     cmds.setAttr(key_name, v)
 
-    pprint('\n===> save blendshape keys into file: ')
-    pprint(blendshape_keys_filename)
-    fp = open(blendshape_keys_filename, 'w')
-    fp.write('\n'.join(blendshape_keys_list) + '\n')
-    fp.close()
+    # 1. Set values for bs weights
+    for k, v in blendshape_values_dict.iteritems():
+        # if v < 0.01:
+        #     v = 0
+        if not k in blendshape_keys_list:
+            continue
+
+        key_name = "{}.{}".format(blendshape_node_name, k)
+        try:
+            cmds.setAttr(key_name, v)
+        except:
+            pprint('---> skip locked key: ' + key_name)
+
+    # cmds.setKeyframe(mesh_node_name)
+    cmds.setKeyframe(blendshape_node_name)
+
+
+def set_keyframe_values(node_name, frame_number, attribute_values_dict):
+    """
+    Set keyframe at frame #frame_number.
+
+    Args:
+        node_name: str
+            Name of ;
+        frame_number: int
+            Frame number (>0)
+        attribute_values_dict: dict
+            Values for blendshape weights, a dict
+
+    Returns: 
+        None.
+    """
+
+    cmds.currentTime(frame_number)
+    pprint('===> currentTime {}'.format(frame_number))
+
+    for k, v in attribute_values_dict.iteritems():
+        key_name = "{}.{}".format(node_name, k)
+        # pprint('---> setAttr {} {}'.format(key_name, v))
+        try:
+            cmds.setAttr(key_name, v)
+        except:
+            pprint('skip locked key: ' + key_name)
+
+    cmds.setKeyframe(node_name)
+
+
+if __name__ == '__main__':
+    blendshape_node_name = r'AI_TD_01_Head01_blendShape'
+
+    keyframe_json_filename = r'/Users/zhaoyafei/work/maya-scripts-zyf/data/add_smile_1_bs_head_version1_20201126.json'
+    save_dir = r'/Users/zhaoyafei/work/maya-scripts-zyf/data'
+
+    with open(keyframe_json_filename, 'r') as fp:
+        attr_frames_list = json.load(fp)
+        fp.close()
+
+    frame_num = len(attr_frames_list)
+    pprint('===> {} frames in total'.format(frame_num))
 
     # 0. make all blendshape keys/attributes settable
+    blendshape_keys_list = get_blendshape_keys_list(blendshape_node_name)
+
     need_restore, restore_info = make_blendshape_keys_settable(
         blendshape_node_name, save_dir, blendshape_keys_list)
 
     if need_restore < 0:
         exit()
 
-    # 1. Export the neutral pose.
-    obj_filename = osp.join(save_dir, '00_neutral.obj')
-    pprint('===> Export the neutral pose into {}.'.format(obj_filename))
+    frame_cnt = 0
+    for attr_frame in attr_frames_list:
+        # frame_cnt = attr_frame['frame_num']
+        frame_cnt += 1
 
-    curr_time = 0
-    cmds.currentTime(curr_time)
+        bs_dict = attr_frame["frame"]["animation"]["agent"]["values"]
+        set_keyframe_values(blendshape_node_name, frame_cnt, bs_dict)
 
-    if osp.isfile(obj_filename) and skip_existing_files:
-        pprint('===> skip existing file: {}'.format(obj_filename))
-    else:
-        for k in blendshape_keys_list:
-            v = 0.
-            key_name = "{}.{}".format(blendshape_node_name, k)
+        bones_dict = attr_frame["frame"]["animation"]["agent"]["bones"]
 
-            cmds.setAttr(key_name, v)
-            cmds.setKeyframe(key_name)
-
-        # Select Mesh before export
-        cmds.select(mesh_node_name)
-
-        if force_triangulate:
-            pprint('===> Force to export triangulated mesh')
-            if isinstance(mesh_node_name, list):
-                cmd = "polyTriangulate -ch 1 " + ' '.join(mesh_node_name)
-            else:
-                cmd = "polyTriangulate -ch 1 " + mesh_node_name
-
-            pprint('===> run MEL command: ')
-            pprint(cmd)
-
-            mel.eval(cmd)
-
-        cmd = """file -force -options "groups=1;ptgroups=1;materials=1;smoothing=1;normals=1"
-                    -typ "OBJexport" -pr -es " {}";""".format(obj_filename)
-
-        # cmd = """file -force -options "groups=1;ptgroups=1;materials=1;smoothing=1;normals=1"
-        #             -typ "OBJexport" -pr -es " {}/{}.obj";""".format(save_dir, "00_neutral")
-        pprint('===> run MEL command: ')
-        pprint(cmd)
-        mel.eval(cmd)
-
-    # 2. Export blendshape target shapes.
-    # for curr_k in blendshape_keys_list[:5]:
-    for curr_k in blendshape_keys_list:
-        obj_filename = osp.join(save_dir, curr_k+'.obj')
-
-        # if not curr_k.startswith('jaw'):
-        #     continue
-        pprint('===> Export the blendshape key: {}'.format(curr_k))
-
-        curr_time += 1
-        cmds.currentTime(curr_time)
-
-        if osp.isfile(obj_filename) and skip_existing_files:
-            pprint('===> skip existing file: {}'.format(obj_filename))
-        else:
-            for k in blendshape_keys_list:
-                v = 1.0 if curr_k == k else 0.
-                key_name = "{}.{}".format(blendshape_node_name, k)
-                cmds.setAttr(key_name, v)
-                cmds.setKeyframe(key_name)
-
-            # Select Mesh before export
-            cmds.select(mesh_node_name)
-
-            if force_triangulate:
-                pprint('===> Force to export triangulated mesh')
-                if isinstance(mesh_node_name, list):
-                    cmd = "polyTriangulate -ch 1 " + ' '.join(mesh_node_name)
-                else:
-                    cmd = "polyTriangulate -ch 1 " + mesh_node_name
-
-                pprint('===> run MEL command: ')
-                pprint(cmd)
-                mel.eval(cmd)
-
-            cmd = """file -force -options "groups=1;ptgroups=1;materials=1;smoothing=1;normals=1"
-                        -typ "OBJexport" -pr -es " {}";""".format(obj_filename)
-            # cmd = """file -force -options "groups=1;ptgroups=1;materials=1;smoothing=1;normals=1"
-            #               -typ "OBJexport" -pr -es " {}/{}.obj";""".format(save_dir, curr_k)
-            pprint('===> run MEL command: ')
-            pprint(cmd)
-            mel.eval(cmd)
+        for bone_name, attr_dict in bones_dict.iteritems():
+            bone_name = bone_name.capitalize()
+            set_keyframe_values(bone_name, frame_cnt, attr_dict)
 
     if need_restore==1:
         restore_settable_modification(restore_info)
-
-
-if __name__ == '__main__':
-    save_dir = r'/Users/zhaoyafei/Downloads/bs_definition_3D_face/bs_objs_bs_vert_tri'
-    # save_dir = r'/Users/zhaoyafei/Downloads/bs_definition_3D_face/bs_objs_bs_vert_quad'
-
-    blendshape_node_name = r'Head01_blendShape'
-    pprint("===> blendshape_node_name: {}".format(blendshape_node_name))
-
-    # mesh_node_name = r'Head01Shape'
-    mesh_node_name = get_blendshape_geometry_name(blendshape_node_name)
-    pprint("===> mesh_node_name: {}".format(mesh_node_name))
-
-    force_triangulate = True
-    skip_existing_files = True
-
-    export_blendshape_target_shapes(
-        blendshape_node_name, mesh_node_name, save_dir,
-        force_triangulate=force_triangulate,
-        skip_existing_files=skip_existing_files)
