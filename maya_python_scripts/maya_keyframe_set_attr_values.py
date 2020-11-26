@@ -1,6 +1,6 @@
 # coding=utf-8
 # """
-# Export .obj files for all blendshape weights in Maya.
+# Set keyframe attribute values (blendshape weights and bones/joints rotations) in Maya.
 
 # Author: Zhao Yafei (zhaoyafei0210@gmail.com)
 # """
