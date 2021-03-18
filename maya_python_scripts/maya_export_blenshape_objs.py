@@ -156,11 +156,13 @@ def make_blendshape_keys_settable(blendshape_node_name, save_dir, blendshape_key
                     restore_info_dict["connections_to"] = cmds.listConnections(
                         key_name, d=True, s=False, p=True)
 
-                    for attr in restore_info_dict["connections_from"]:
-                        cmds.disconnectAttr(attr, key_name)
+                    if isinstance(restore_info_dict["connections_from"], list):
+                        for attr in restore_info_dict["connections_from"]:
+                            cmds.disconnectAttr(attr, key_name)
 
-                    for attr in restore_info_dict["connections_to"]:
-                        cmds.disconnectAttr(key_name, attr)
+                    if isinstance(restore_info_dict["connections_to"], list):
+                        for attr in restore_info_dict["connections_to"]:
+                            cmds.disconnectAttr(key_name, attr)
 
                 settable_restore_info_list.append(restore_info_dict)
 
