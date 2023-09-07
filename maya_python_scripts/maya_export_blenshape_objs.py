@@ -30,13 +30,15 @@ def get_current_scene_name():
     return scene_name
 
 
-def get_blendshape_keys_list(blendshape_node_name):
+def get_blendshape_keys_list(blendshape_node_name, sort_keys=False):
     """
     Get name list (blendshape keys) of target-shapes/morphing-targets of blendshape.
 
     Args:
         blendshape_node_name: str 
             Name of blend shape deformer (blendShape Node) in Maya.
+        sort_keys: bool
+            Whether to sort the keys by name.
 
     Returns: 
         list of str
@@ -52,9 +54,11 @@ def get_blendshape_keys_list(blendshape_node_name):
     blendshape_keys_list = cmds.listAttr(
         blendshape_node_name, st='weight', multi=True, keyable=True)
 
-    blendshape_keys_list.sort()
+    if sort_keys:
+        blendshape_keys_list.sort()
 
     return blendshape_keys_list
+
 
 
 def get_blendshape_geometry_name(blendshape_node_name):
@@ -256,7 +260,7 @@ def export_blendshape_target_shapes(blendshape_node_name,
         save_dir, '{}.blendshape.{}.txt'.format(scene_name, blendshape_node_name))
 
     if blendshape_keys_list is None:
-        blendshape_keys_list = get_blendshape_keys_list(blendshape_node_name)
+        blendshape_keys_list = get_blendshape_keys_list(blendshape_node_name, sort_keys=True)
 
     for idx, blendshape in enumerate(blendshape_keys_list):
         pprint('---> {}: {}'.format(idx+1, blendshape))

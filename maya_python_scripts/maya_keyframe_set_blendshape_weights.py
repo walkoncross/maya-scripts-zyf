@@ -13,17 +13,20 @@ import maya.mel as mel
 from pprint import pprint
 
 
-def get_blendshape_keys_list(blendshape_node_name):
+def get_blendshape_keys_list(blendshape_node_name, sort_keys=False):
     """
-    Get name list of blendshape keys (name of target-shapes/morphing-targets).
+    Get name list (blendshape keys) of target-shapes/morphing-targets of blendshape.
 
     Args:
-        blendshape_node_name: str
+        blendshape_node_name: str 
             Name of blend shape deformer (blendShape Node) in Maya.
+        sort_keys: bool
+            Whether to sort the keys by name.
 
     Returns: 
         list of str
-            Name list of blendshape keys (weight names).
+            Name list of target shapes of the input blendshape node.
+
     """
 
     # Maya Mel cmd
@@ -34,7 +37,8 @@ def get_blendshape_keys_list(blendshape_node_name):
     blendshape_keys_list = cmds.listAttr(
         blendshape_node_name, st='weight', multi=True, keyable=True)
 
-    blendshape_keys_list.sort()
+    if sort_keys:
+        blendshape_keys_list.sort()
 
     return blendshape_keys_list
 
@@ -61,7 +65,7 @@ def set_blendshape_keyframe(mesh_node_name, blendshape_node_name,
     """
 
     if blendshape_keys_list is None:
-        blendshape_keys_list = get_blendshape_keys_list(blendshape_node_name)
+        blendshape_keys_list = get_blendshape_keys_list(blendshape_node_name, sort_keys=True)
 
     cmds.currentTime(frame_number)
     cmds.select(mesh_node_name, replace=True)
@@ -103,7 +107,7 @@ if __name__ == '__main__':
     if not osp.exists(save_dir):
         os.makedirs(save_dir)
 
-    blendshape_keys_list = get_blendshape_keys_list(blendshape_node_name)
+    blendshape_keys_list = get_blendshape_keys_list(blendshape_node_name, sort_keys=True)
 
     for idx, blendshape in enumerate(blendshape_keys_list):
         pprint('===> {}: {}'.format(idx+1, blendshape))

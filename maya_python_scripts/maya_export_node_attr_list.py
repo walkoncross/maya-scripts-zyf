@@ -32,7 +32,10 @@ def get_current_scene_name():
     return scene_name
 
 
-def export_node_attr_list(node_name, save_dir, only_user_defined=False):
+def export_node_attr_list(node_name, 
+                        save_dir, 
+                        attribute_name_pattern=None,
+                        only_user_defined=False):
     """
     Get attribute list of a node.
 
@@ -41,6 +44,8 @@ def export_node_attr_list(node_name, save_dir, only_user_defined=False):
             Node name.
         save_dir: str
             Path to save dir.
+        attribute_name_pattern: str
+            List only the attributes that match the other criteria AND match the string(s) passed from this flag. String can be a regular expression.
         only_user_defined: bool
             If True, only export user-defined attributes.
 
@@ -59,14 +64,19 @@ def export_node_attr_list(node_name, save_dir, only_user_defined=False):
 
     scene_name = get_current_scene_name()
 
-    attr_list = cmds.listAttr(node_name, ud=only_user_defined)
+    if attribute_name_pattern is None:
+        attr_list = cmds.listAttr(node_name, ud=only_user_defined)
+    else:
+        attr_list = cmds.listAttr(
+            node_name, st=attribute_name_pattern, ud=only_user_defined)
+
     dump_str = json.dumps(attr_list, indent=2)
 
     print("===> User-defined attribute list of ", node_name)
     print(dump_str)
 
     fn = osp.join(
-        save_dir, '{}.node_attr_list.{}.txt'.format(scene_name, node))
+        save_dir, '{}.node_attr_list.{}.json'.format(scene_name, node))
 
     # fn = osp.join(save_dir, node_name + '_attr_list.json')
     fp = open(fn, 'w')
@@ -77,8 +87,11 @@ def export_node_attr_list(node_name, save_dir, only_user_defined=False):
 if __name__ == '__main__':
     nodes_list = ['head', 'L_shoulder', 'R_shoulder']
     save_dir = r'/Users/zhaoyafei/work/maya-scripts-zyf/maya_exports'
+    attribute_name_pattern = None
     only_user_defined = True
 
     for node in nodes_list:
-        export_node_attr_list(node, save_dir,
-                              only_user_defined=only_user_defined)
+        export_node_attr_list(node, 
+                              save_dir,
+                              attribute_name_pattern,
+                              only_user_defined)

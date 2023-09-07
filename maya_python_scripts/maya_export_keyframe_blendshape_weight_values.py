@@ -54,13 +54,16 @@ def get_all_blendshape_nodes(show_type=True):
     return blendshape_nodes_list
 
 
-def get_blendshape_keys_list(blendshape_node_name):
+d
+def get_blendshape_keys_list(blendshape_node_name, sort_keys=False):
     """
     Get name list (blendshape keys) of target-shapes/morphing-targets of blendshape.
 
     Args:
         blendshape_node_name: str 
             Name of blend shape deformer (blendShape Node) in Maya.
+        sort_keys: bool
+            Whether to sort the keys by name.
 
     Returns: 
         list of str
@@ -76,7 +79,8 @@ def get_blendshape_keys_list(blendshape_node_name):
     blendshape_keys_list = cmds.listAttr(
         blendshape_node_name, st='weight', multi=True, keyable=True)
 
-    # blendshape_keys_list.sort()
+    if sort_keys:
+        blendshape_keys_list.sort()
 
     return blendshape_keys_list
 
@@ -135,7 +139,7 @@ def export_keyframe_blendshape_weight_values(blendshape_node_name, save_dir='./'
         for node in blendshape_node_name:
             pprint('---> blendshape: {}'.format(node))
             save_filename = "{}/{}.keyframe.{}.frame_{}.json".format(save_dir, scene_name, node, curr_time)
-            blendshape_keys_list = get_blendshape_keys_list(node)
+            blendshape_keys_list = get_blendshape_keys_list(node, sort_keys=False)
             weight_values = cmds.getAttr(node+'.weight')[0]
             # pprint(len(blendshape_keys_list))
             # pprint(len(weight_values[0]))

@@ -31,13 +31,15 @@ def get_current_scene_name():
     return scene_name
 
 
-def get_blendshape_keys_list(blendshape_node_name):
+def get_blendshape_keys_list(blendshape_node_name, sort_keys=False):
     """
     Get name list (blendshape keys) of target-shapes/morphing-targets of blendshape.
 
     Args:
         blendshape_node_name: str 
             Name of blend shape deformer (blendShape Node) in Maya.
+        sort_keys: bool
+            Whether to sort the keys by name.
 
     Returns: 
         list of str
@@ -53,7 +55,8 @@ def get_blendshape_keys_list(blendshape_node_name):
     blendshape_keys_list = cmds.listAttr(
         blendshape_node_name, st='weight', multi=True, keyable=True)
 
-    blendshape_keys_list.sort()
+    if sort_keys:
+        blendshape_keys_list.sort()
 
     return blendshape_keys_list
 
@@ -127,7 +130,7 @@ def make_blendshape_keys_settable(blendshape_node_name, save_dir, blendshape_key
 
         if blendshape_keys_list is None:
             blendshape_keys_list = get_blendshape_keys_list(
-                blendshape_node_name)
+                blendshape_node_name, sort_keys=True)
 
         for k in blendshape_keys_list:
             key_name = "{}.{}".format(blendshape_node_name, k)
@@ -244,7 +247,7 @@ def set_blendshape_keyframe(mesh_node_name, blendshape_node_name,
     """
 
     if blendshape_keys_list is None:
-        blendshape_keys_list = get_blendshape_keys_list(blendshape_node_name)
+        blendshape_keys_list = get_blendshape_keys_list(blendshape_node_name, sort_keys=True)
 
     cmds.currentTime(frame_number)
     cmds.select(mesh_node_name, replace=True)
@@ -316,7 +319,7 @@ if __name__ == '__main__':
     pprint('===> {} frames in total'.format(frame_num))
 
     # 0. make all blendshape keys/attributes settable
-    blendshape_keys_list = get_blendshape_keys_list(blendshape_node_name)
+    blendshape_keys_list = get_blendshape_keys_list(blendshape_node_name, sort_keys=True)
 
     need_restore, restore_info = make_blendshape_keys_settable(
         blendshape_node_name, save_dir, blendshape_keys_list)
