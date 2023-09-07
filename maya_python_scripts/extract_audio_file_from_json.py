@@ -47,16 +47,17 @@ def extract_audio_file_from_json(json_file, save_dir):
     concated_audio_data = np.vstack(audio_data_list)
     print('===> sample_rate=',sample_rate)
     print('===> concated_audio_data.shape', concated_audio_data.shape)
+    print('===> sample_rate=',sample_rate)
 
     audio_fname = osp.join(save_dir, base_name+'.wav')
     wavfile.write(audio_fname, sample_rate, concated_audio_data)
     
+    print('===> {} frames in total'.format(frame_cnt))
     print('===> extracted audio saved into: ', audio_fname)
-
     return audio_fname
 
 if __name__ == '__main__':
-    keyframe_json_filename = r'/Users/zhaoyafei/work/maya-scripts-zyf/data/add_smile_1_bs_head_version1_20201126.json'
-    save_dir = r'/Users/zhaoyafei/work/maya-scripts-zyf/data'
+    keyframe_json_filename = r'/Users/zhaoyafei/Downloads/video2bs_with_bones/jinghuashuo8_bs_head_version1_20201127.json'
+    save_dir = r'/Users/zhaoyafei/Downloads/video2bs_with_bones/'
 
     audio_fname = extract_audio_file_from_json(keyframe_json_filename, save_dir)
