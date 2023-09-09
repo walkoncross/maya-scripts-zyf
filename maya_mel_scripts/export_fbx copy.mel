@@ -1,0 +1,30 @@
+bakeResults -simulation true -t "0:140" -sampleBy 1 -oversamplingRate 1 -disableImplicitControl true -preserveOutsideKeys true -sparseAnimCurveBake false -removeBakedAttributeFromLayer false -removeBakedAnimFromLayer false -bakeOnOverrideLayer false -minimizeRotation true -controlPoints false -shape true {"chect_mid_ctrl.translate", "chect_mid_ctrl.rotate", "Hips_ctrl.translate", "Hips_ctrl.rotate", "spine_1_ctrl.rotate", "L_hand_fk_ctrl.rotate", "head_ctrl.rotate", "L_lowarm_fk_ctrl.rotate", "R_arm_fk_ctrl.rotate", "R_lowarm_fk_ctrl.rotate", "L_arm_fk_ctrl.rotate", "R_hand_fk_ctrl.rotate", "L_foot_fk_ctrl.rotate", "R_foot_fk_ctrl.rotate", "spine_5_ctrl.rotate", "R_leg_ik_ctrl.rotate", "R_leg_ik_ctrl.translate", "L_leg_ik_ctrl.translate", "body_ctrl.rotate", "body_ctrl.translate", "chest_ctrl.rotate", "spine_2_ctrl.rotate", "spine_3_ctrl.rotate", "spine_4_ctrl.rotate", "neck_3_ctrl.rotate", "neck_2_ctrl.rotate", "neck_1_ctrl.rotate", "L_leg_ik_ctrl.rotate"};
+
+select -r AI_TD_01_grp ;
+file -force -options "v=0;" -typ "FBX export" -pr -es "/Users/zhaoyafei/Downloads/3D_model_assets/maya_humanIK_templates/tang_hik_dancing_skeleton_only.fbx";
+file -force -options "v=0;" -typ "FBX export" -pr -es "/Users/zhaoyafei/Downloads/3D_model_assets/maya_humanIK_templates/tang_hik_dancing_skeleton_only2.fbx";
+
+select -r mihamo_xbot ;
+file -import -type "FBX"  -ignoreVersion -ra true -mergeNamespacesOnClash false -namespace "Hip_Hop_Dancing" -options "fbx"  -pr  -importTimeRange "combine" "/Users/zhaoyafei/Downloads/3D_model_assets/adobe-mixamo-characters/x_bot/Hip Hop Dancing.fbx";
+//file -import -type "FBX"  -ignoreVersion -ra true -mergeNamespacesOnClash false -namespace "Salsa_Dance_Variation_Five" -options "fbx"  -pr  -importTimeRange "combine" "/Volumes/seagate2Tz/backup/Downloads/3D_model_assets/adobe-mixamo-characters/xbot_dance_animations_noskin_30fps/Salsa Dance Variation Five.fbx";
+//file -force -options "v=0;" -typ "FBX export" -pr -es "/Users/zhaoyafei/Downloads/3D_model_assets/maya_humanIK_templates/tang_hik_hiphopdancing_skeleton_only2.fbx";
+
+
+string $filename="/Users/zhaoyafei/Downloads/3D_model_assets/adobe-mixamo-characters/x_bot/Hip Hop Dancing.fbx";
+FBXRead -f $filename;
+FBXGetTakeLocalTimeSpan 2;
+
+string $input_fbx="/Users/zhaoyafei/Downloads/3D_model_assets/adobe-mixamo-characters/x_bot/Hip Hop Dancing.fbx";
+FBXImport -f $input_fbx;
+
+$output_fbx = $input_fbx+".tang_out.fbx";
+print("===> Export fbx into: " + $output_fbx);
+
+currentTime 0;
+select -r AI_TD_01_grp ;
+FBXExportAnimationOnly -v true;
+FBXExportBakeComplexAnimation -v true;
+FBXExportBakeComplexStart -v 0;
+FBXExportBakeComplexEnd -v $num_frames;
+FBXExportBakeComplexStep -v 1;
+FBXExport -f $output_fbx -s;

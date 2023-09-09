@@ -218,7 +218,7 @@ def restore_settable_modification(restore_info):
         if "connections_to" in restore_info_dict and isinstance(restore_info_dict["connections_to"], list) and len(restore_info_dict["connections_to"]) > 0:
             for attr in restore_info_dict["connections_to"]:
                 cmds.connectAttr(key_name, attr)
-        if "connections_from" in restore_info_dict and isinstance(restore_info_dict["connections_from"], list) and len(restore_info_dict["connections_from"]) > 0:
+        if "connections_from" in restore_info_dict and  isinstance(restore_info_dict["connections_from"], list) and len(restore_info_dict["connections_from"]) > 0:
             for attr in restore_info_dict["connections_from"]:
                 cmds.connectAttr(attr, key_name)
 
@@ -369,17 +369,17 @@ def export_blendshape_target_shapes(blendshape_node_name,
 
 
 if __name__ == '__main__':
-    save_dir = r'/Users/zhaoyafei/Downloads/bs_definition_3D_face/bs_objs_bs_vert_tri'
+    save_dir = r'D:/zhaoyafei/lmz_head_mesh_blendshapes'
     # save_dir = r'/Users/zhaoyafei/Downloads/bs_definition_3D_face/bs_objs_bs_vert_quad'
 
-    blendshape_node_name = r'Head01_blendShape'
+    blendshape_node_name = r'head_lod0_mesh_blendShape'
     pprint("===> blendshape_node_name: {}".format(blendshape_node_name))
 
     # mesh_node_name = r'Head01Shape'
     mesh_node_name = get_blendshape_geometry_name(blendshape_node_name)
     pprint("===> mesh_node_name: {}".format(mesh_node_name))
 
-    force_triangulate = True
+    force_triangulate = False
     skip_existing_files = True
 
     export_blendshape_target_shapes(

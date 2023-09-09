@@ -1,0 +1,1190 @@
+[
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.brows_dn_blink", 
+    "connections_from": [
+      "facecial_bs_exp.output[0]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.brows_dn_blink"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.brows_dn_in", 
+    "connections_from": [
+      "facecial_bs_exp.output[1]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.brows_dn_in"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.brows_dn_in_eye_sqz", 
+    "connections_from": [
+      "facecial_bs_exp.output[108]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.brows_dn_in_eye_sqz"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.brows_dn_out", 
+    "connections_from": [
+      "facecial_bs_exp.output[2]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.brows_dn_out"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.brows_sqz", 
+    "connections_from": [
+      "facecial_bs_exp.output[3]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.brows_sqz"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.brows_sqz_eye_sqz", 
+    "connections_from": [
+      "facecial_bs_exp.output[109]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.brows_sqz_eye_sqz"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.brows_sqz_up", 
+    "connections_from": [
+      "facecial_bs_exp.output[4]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.brows_sqz_up"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.brows_up", 
+    "connections_from": [
+      "facecial_bs_exp.output[5]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.brows_up"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.brows_up_blink", 
+    "connections_from": [
+      "facecial_bs_exp.output[6]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.brows_up_blink"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.browssqz_blink", 
+    "connections_from": [
+      "facecial_bs_exp.output[101]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.browssqz_blink"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.browssqzup_blink", 
+    "connections_from": [
+      "facecial_bs_exp.output[7]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.browssqzup_blink"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.cheek_raise", 
+    "connections_from": [
+      "facecial_bs_exp.output[8]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.cheek_raise"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.cheek_raise_blink", 
+    "connections_from": [
+      "facecial_bs_exp.output[9]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.cheek_raise_blink"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.chin_dn", 
+    "connections_from": [
+      "facecial_bs_exp.output[10]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.chin_dn"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.chin_raise", 
+    "connections_from": [
+      "facecial_bs_exp.output[11]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.chin_raise"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.chin_tension", 
+    "connections_from": [
+      "facecial_bs_exp.output[12]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.chin_tension"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.corner_dn", 
+    "connections_from": [
+      "facecial_bs_exp.output[14]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.corner_dn"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.corner_sqz", 
+    "connections_from": [
+      "facecial_bs_exp.output[15]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.corner_sqz"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.corner_up", 
+    "connections_from": [
+      "facecial_bs_exp.output[13]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.corner_up"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.dimple", 
+    "connections_from": [
+      "facecial_bs_exp.output[16]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.dimple"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.disgust", 
+    "connections_from": [
+      "facecial_bs_exp.output[17]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.disgust"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.disgust_close", 
+    "connections_from": [
+      "facecial_bs_exp.output[18]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.disgust_close"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.eye_blink", 
+    "connections_from": [
+      "facecial_bs_exp.output[19]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.eye_blink"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.eye_blink_b", 
+    "connections_from": [
+      "facecial_bs_exp.output[20]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.eye_blink_b"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.eye_look_dn", 
+    "connections_from": [
+      "facecial_bs_exp.output[21]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.eye_look_dn"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.eye_look_dn_b", 
+    "connections_from": [
+      "facecial_bs_exp.output[22]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.eye_look_dn_b"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.eye_look_l", 
+    "connections_from": [
+      "facecial_bs_exp.output[23]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.eye_look_l"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.eye_look_l__50", 
+    "connections_from": [
+      "facecial_bs_exp.output[102]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.eye_look_l__50"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.eye_look_r", 
+    "connections_from": [
+      "facecial_bs_exp.output[24]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.eye_look_r"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.eye_look_r__50", 
+    "connections_from": [
+      "facecial_bs_exp.output[103]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.eye_look_r__50"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.eye_look_up", 
+    "connections_from": [
+      "facecial_bs_exp.output[25]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.eye_look_up"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.eye_squint", 
+    "connections_from": [
+      "facecial_bs_exp.output[26]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.eye_squint"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.eye_sqz", 
+    "connections_from": [
+      "facecial_bs_exp.output[27]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.eye_sqz"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.eye_sqz_blink", 
+    "connections_from": [
+      "facecial_bs_exp.output[28]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.eye_sqz_blink"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.frown", 
+    "connections_from": [
+      "facecial_bs_exp.output[29]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.frown"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.funnel", 
+    "connections_from": [
+      "facecial_bs_exp.output[30]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.funnel"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.funnel_close", 
+    "connections_from": [
+      "facecial_bs_exp.output[31]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.funnel_close"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.funnel_wide", 
+    "connections_from": [
+      "facecial_bs_exp.output[32]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.funnel_wide"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.head_skin_slide", 
+    "connections_from": [
+      "facecial_bs_exp.output[33]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.head_skin_slide"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.jaw_back", 
+    "connections_from": [
+      "facecial_bs_exp.output[35]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.jaw_back"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.jaw_clench", 
+    "connections_from": [
+      "facecial_bs_exp.output[36]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.jaw_clench"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.jaw_fwd", 
+    "connections_from": [
+      "facecial_bs_exp.output[37]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.jaw_fwd"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.jaw_l", 
+    "connections_from": [
+      "facecial_bs_exp.output[38]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.jaw_l"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.jaw_open", 
+    "connections_from": [
+      "facecial_bs_exp.output[39]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.jaw_open"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.jaw_r", 
+    "connections_from": [
+      "facecial_bs_exp.output[40]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.jaw_r"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.jaw_up", 
+    "connections_from": [
+      "facecial_bs_exp.output[34]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.jaw_up"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.lip_in", 
+    "connections_from": [
+      "facecial_bs_exp.output[41]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.lip_in"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.lip_lock_back", 
+    "connections_from": [
+      "facecial_bs_exp.output[42]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.lip_lock_back"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.lip_lock_fwd", 
+    "connections_from": [
+      "facecial_bs_exp.output[43]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.lip_lock_fwd"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.lip_lock_l", 
+    "connections_from": [
+      "facecial_bs_exp.output[44]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.lip_lock_l"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.lip_lock_l_lip_lock_open", 
+    "connections_from": [
+      "facecial_bs_exp.output[106]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.lip_lock_l_lip_lock_open"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.lip_lock_open", 
+    "connections_from": [
+      "facecial_bs_exp.output[45]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.lip_lock_open"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.lip_lock_open_lip_lock_r", 
+    "connections_from": [
+      "facecial_bs_exp.output[107]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.lip_lock_open_lip_lock_r"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.lip_lock_r", 
+    "connections_from": [
+      "facecial_bs_exp.output[46]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.lip_lock_r"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.lwr_lid_dn", 
+    "connections_from": [
+      "facecial_bs_exp.output[47]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.lwr_lid_dn"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.lwr_lid_up", 
+    "connections_from": [
+      "facecial_bs_exp.output[48]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.lwr_lid_up"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.lwr_lip_bk", 
+    "connections_from": [
+      "facecial_bs_exp.output[49]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.lwr_lip_bk"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.lwr_lip_dn", 
+    "connections_from": [
+      "facecial_bs_exp.output[51]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.lwr_lip_dn"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.lwr_lip_fwd", 
+    "connections_from": [
+      "facecial_bs_exp.output[52]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.lwr_lip_fwd"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.lwr_lip_l", 
+    "connections_from": [
+      "facecial_bs_exp.output[53]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.lwr_lip_l"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.lwr_lip_r", 
+    "connections_from": [
+      "facecial_bs_exp.output[54]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.lwr_lip_r"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.lwr_lip_up", 
+    "connections_from": [
+      "facecial_bs_exp.output[50]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.lwr_lip_up"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.lwr_lip_vol", 
+    "connections_from": [
+      "facecial_bs_exp.output[55]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.lwr_lip_vol"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.mouth_dn", 
+    "connections_from": [
+      "facecial_bs_exp.output[56]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.mouth_dn"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.mouth_fwd", 
+    "connections_from": [
+      "facecial_bs_exp.output[60]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.mouth_fwd"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.mouth_l", 
+    "connections_from": [
+      "facecial_bs_exp.output[57]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.mouth_l"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.mouth_r", 
+    "connections_from": [
+      "facecial_bs_exp.output[58]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.mouth_r"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.mouth_up", 
+    "connections_from": [
+      "facecial_bs_exp.output[59]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.mouth_up"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.neck_blow", 
+    "connections_from": [
+      "facecial_bs_exp.output[61]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.neck_blow"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.neck_muscle", 
+    "connections_from": [
+      "facecial_bs_exp.output[62]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.neck_muscle"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.neck_slide", 
+    "connections_from": [
+      "facecial_bs_exp.output[63]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.neck_slide"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.neck_tension", 
+    "connections_from": [
+      "facecial_bs_exp.output[64]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.neck_tension"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.nl_deep", 
+    "connections_from": [
+      "facecial_bs_exp.output[65]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.nl_deep"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.nl_deep_l", 
+    "connections_from": [
+      "facecial_bs_exp.output[66]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.nl_deep_l"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.nl_deep_r", 
+    "connections_from": [
+      "facecial_bs_exp.output[67]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.nl_deep_r"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.nose_close", 
+    "connections_from": [
+      "facecial_bs_exp.output[68]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.nose_close"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.nose_dn", 
+    "connections_from": [
+      "facecial_bs_exp.output[70]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.nose_dn"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.nose_open", 
+    "connections_from": [
+      "facecial_bs_exp.output[69]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.nose_open"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.o", 
+    "connections_from": [
+      "facecial_bs_exp.output[71]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.o"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.o_wide", 
+    "connections_from": [
+      "facecial_bs_exp.output[72]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.o_wide"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.press", 
+    "connections_from": [
+      "facecial_bs_exp.output[73]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.press"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.pucker", 
+    "connections_from": [
+      "facecial_bs_exp.output[74]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.pucker"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.puff", 
+    "connections_from": [
+      "facecial_bs_exp.output[75]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.puff"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.puff_dn", 
+    "connections_from": [
+      "facecial_bs_exp.output[76]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.puff_dn"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.puff_up", 
+    "connections_from": [
+      "facecial_bs_exp.output[77]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.puff_up"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.smile", 
+    "connections_from": [
+      "facecial_bs_exp.output[78]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.smile"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.smile_close", 
+    "connections_from": [
+      "facecial_bs_exp.output[79]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.smile_close"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.smile_drop", 
+    "connections_from": [
+      "facecial_bs_exp.output[80]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.smile_drop"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.sneer", 
+    "connections_from": [
+      "facecial_bs_exp.output[81]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.sneer"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.sneer_close", 
+    "connections_from": [
+      "facecial_bs_exp.output[82]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.sneer_close"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.sticky_lips", 
+    "connections_from": [
+      "facecial_bs_exp.output[83]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.sticky_lips"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.stretch", 
+    "connections_from": [
+      "facecial_bs_exp.output[84]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.stretch"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.stretch_close", 
+    "connections_from": [
+      "facecial_bs_exp.output[85]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.stretch_close"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.suck", 
+    "connections_from": [
+      "facecial_bs_exp.output[86]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.suck"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.swallow_1", 
+    "connections_from": [
+      "facecial_bs_exp.output[87]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.swallow_1"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.swallow_2", 
+    "connections_from": [
+      "facecial_bs_exp.output[88]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.swallow_2"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.swallow_3", 
+    "connections_from": [
+      "facecial_bs_exp.output[89]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.swallow_3"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.swallow_4", 
+    "connections_from": [
+      "facecial_bs_exp.output[90]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.swallow_4"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.swallow_5", 
+    "connections_from": [
+      "facecial_bs_exp.output[91]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.swallow_5"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.tension", 
+    "connections_from": [
+      "facecial_bs_exp.output[92]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.tension"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.tight", 
+    "connections_from": [
+      "facecial_bs_exp.output[93]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.tight"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.upr_lid_dn", 
+    "connections_from": [
+      "facecial_bs_exp.output[94]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.upr_lid_dn"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.upr_lid_up", 
+    "connections_from": [
+      "facecial_bs_exp.output[95]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.upr_lid_up"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.upr_lip_bk", 
+    "connections_from": [
+      "facecial_bs_exp.output[96]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.upr_lip_bk"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.upr_lip_dn", 
+    "connections_from": [
+      "facecial_bs_exp.output[97]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.upr_lip_dn"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.upr_lip_fwd", 
+    "connections_from": [
+      "facecial_bs_exp.output[98]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.upr_lip_fwd"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.upr_lip_vol", 
+    "connections_from": [
+      "facecial_bs_exp.output[99]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.upr_lip_vol"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }, 
+  {
+    "key_name": "AI_TD_01_Head01_blendShape.wide", 
+    "connections_from": [
+      "facecial_bs_exp.output[100]"
+    ], 
+    "connections_to": [
+      "ExtendHandle.wide"
+    ], 
+    "keyable": true, 
+    "lock": false
+  }
+]
